@@ -28,6 +28,8 @@ public class ParqueSalitreMagico {
         // Crear una visita asociada al cliente y al tiquete
         Visitas visita1 = new Visitas(1001, cliente1, tiquete1);
 
+        // Mostrar la información de la visita
+        System.out.println(visita1);
 
         // Crear otro cliente
         Cliente cliente2 = new Cliente(2, "Ana García", 987654321, "ana.garcia@example.com", 1.65, 17, 987654321);
