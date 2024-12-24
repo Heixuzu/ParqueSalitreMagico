@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelo;
-
+import basededatos.ConexionDB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 /**
  *
  * @author Heidy
@@ -19,6 +22,10 @@ public class Estacion {
         this.id = id;
         this.ubicacion = ubicacion;
         setEstado(estado); // Validar estado
+    }
+
+    public Estacion() {
+        
     }
 
     // Getters
@@ -60,6 +67,7 @@ public class Estacion {
                ", ubicacion='" + ubicacion + '\'' +
                ", estado='" + estado + '\'' +
                '}';
-    }
+    }   
+
 }
 

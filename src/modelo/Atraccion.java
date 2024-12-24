@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelo;
 
 /**
@@ -11,6 +7,7 @@ package modelo;
 public class Atraccion {
     // Atributos
     private int id;
+    private String nombre;  // Nuevo atributo
     private String descripcion;
     private String clasificacion; // Ej.: "Familiar", "Adrenalina", "Infantil", etc.
     private String condicionesUso; // Ej.: "No apto para personas con problemas de corazón."
@@ -18,8 +15,9 @@ public class Atraccion {
     private double alturaMinima; // En metros
 
     // Constructor
-    public Atraccion(int id, String descripcion, String clasificacion, String condicionesUso, String estado, double alturaMinima) {
+    public Atraccion(int id, String nombre, String descripcion, String clasificacion, String condicionesUso, String estado, double alturaMinima) {
         this.id = id;
+        this.nombre = nombre; // Asignar el nombre
         this.descripcion = descripcion;
         setClasificacion(clasificacion); // Validar clasificación
         this.condicionesUso = condicionesUso;
@@ -30,6 +28,10 @@ public class Atraccion {
     // Getters
     public int getId() {
         return id;
+    }
+
+    public String getNombre() {
+        return nombre; // Obtener el nombre
     }
 
     public String getDescripcion() {
@@ -55,6 +57,10 @@ public class Atraccion {
     // Setters
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre; // Asignar el nombre
     }
 
     public void setDescripcion(String descripcion) {
@@ -100,6 +106,7 @@ public class Atraccion {
     public String toString() {
         return "Atraccion{" +
                "id=" + id +
+               ", nombre='" + nombre + '\'' +  // Mostrar nombre
                ", descripcion='" + descripcion + '\'' +
                ", clasificacion='" + clasificacion + '\'' +
                ", condicionesUso='" + condicionesUso + '\'' +
@@ -108,4 +115,3 @@ public class Atraccion {
                '}';
     }
 }
-

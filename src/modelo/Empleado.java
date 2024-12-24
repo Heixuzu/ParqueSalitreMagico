@@ -1,6 +1,6 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelo;
 
@@ -11,6 +11,7 @@ package modelo;
 public class Empleado {
     // Atributos
     private int id;
+    private int cedula; // Ahora en la segunda posición
     private String nombre;
     private int telefono;
     private String email;
@@ -18,8 +19,9 @@ public class Empleado {
     private String tipo; // Administrativos, Logística, Publicidad, Operador, Mantenimiento
 
     // Constructor
-    public Empleado(int id, String nombre, int telefono, String email, String horario, String tipo) {
+    public Empleado(int id, int cedula, String nombre, int telefono, String email, String horario, String tipo) {
         this.id = id;
+        this.cedula = cedula; // Asignar la cédula
         this.nombre = nombre;
         this.telefono = telefono;
         this.email = email;
@@ -30,6 +32,10 @@ public class Empleado {
     // Getters
     public int getId() {
         return id;
+    }
+
+    public int getCedula() {
+        return cedula; // Obtener la cédula
     }
 
     public String getNombre() {
@@ -55,6 +61,10 @@ public class Empleado {
     // Setters
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setCedula(int cedula) {
+        this.cedula = cedula; // Asignar cédula
     }
 
     public void setNombre(String nombre) {
@@ -91,6 +101,7 @@ public class Empleado {
     public String toString() {
         return "Empleado{" +
                "id=" + id +
+               ", cedula=" + cedula +  // Mostrar la cédula aquí
                ", nombre='" + nombre + '\'' +
                ", telefono=" + telefono +
                ", email='" + email + '\'' +
@@ -99,4 +110,3 @@ public class Empleado {
                '}';
     }
 }
-
