@@ -8,35 +8,32 @@ import java.time.LocalDate;
  *
  * @author Heidy
  */
-
 public class Tiquete {
     // Atributos
     private int id;
-    private String tipo; // Ej.: "Adulto", "Niño", "Senior", etc.
+    private String tipo; // Ej.: "Premium", "Estandar", "Exclusivo"
     private LocalDate fechaAdquisicion;
-    private String estadoAdquisicion; // Ej.: "Activo", "Usado", "Cancelado", etc.
+    private String estadoAdquisicion; // Ej.: "Activo", "Usado", "Cancelado"
     private Cliente clienteAsociado; // Objeto Cliente en lugar de un ID de cliente
 
-    
     // Constructor para insertar
     public Tiquete(String tipo, LocalDate fechaAdquisicion, String estadoAdquisicion, Cliente clienteAsociado) {
-        this.tipo = tipo;
+        setTipo(tipo); // Validar tipo al asignarlo
         this.fechaAdquisicion = fechaAdquisicion;
         setEstadoAdquisicion(estadoAdquisicion); // Validar estado al asignarlo
         this.clienteAsociado = clienteAsociado;
     }       
-    
+
     // Constructor para leer, actualizar y eliminar
     public Tiquete(int id, String tipo, LocalDate fechaAdquisicion, String estadoAdquisicion, Cliente clienteAsociado) {
         this.id = id;
-        this.tipo = tipo;
+        setTipo(tipo); // Validar tipo al asignarlo
         this.fechaAdquisicion = fechaAdquisicion;
         setEstadoAdquisicion(estadoAdquisicion); // Validar estado al asignarlo
         this.clienteAsociado = clienteAsociado;
     }
-    
-    public Tiquete(){
-        
+
+    public Tiquete() {
     }
 
     // Getters
@@ -66,7 +63,14 @@ public class Tiquete {
     }
 
     public void setTipo(String tipo) {
-        this.tipo = tipo;
+        // Validar que el tipo sea uno de los valores permitidos
+        if (tipo.equalsIgnoreCase("Premium") || 
+            tipo.equalsIgnoreCase("Estandar") || 
+            tipo.equalsIgnoreCase("Exclusivo")) {
+            this.tipo = tipo;
+        } else {
+            throw new IllegalArgumentException("Tipo de tiquete no válido: " + tipo);
+        }
     }
 
     public void setFechaAdquisicion(LocalDate fechaAdquisicion) {

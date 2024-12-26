@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package main;
+import controlador.AtraccionControlador;
 import controlador.EstacionControlador;
 import controlador.VisitasControlador;
 import controlador.ClienteControlador;
@@ -41,14 +42,24 @@ public class ParqueSalitreMagico {
         System.out.println(cliente3);
         
         // Crear objetos Tiquete
-        Tiquete tiquete1 = new Tiquete( 1,"Adulto", LocalDate.now(), "Activo", cliente1);
-        Tiquete tiquete2 = new Tiquete( "Adulto", LocalDate.now().minusDays(5), "Usado", cliente1);
-        Tiquete tiquete3 = new Tiquete( "Niño", LocalDate.now().minusMonths(1), "Cancelado", cliente3);
+        Tiquete tiquete1 = new Tiquete( 1,"Premium", LocalDate.now(), "Activo", cliente1);
+        Tiquete tiquete2 = new Tiquete( "Estandar", LocalDate.now().minusDays(5), "Usado", cliente1);
+        Tiquete tiquete3 = new Tiquete( "Exclusivo", LocalDate.now().minusMonths(1), "Cancelado", cliente3);
 
         // Mostrar los objetos
         System.out.println(tiquete1);
         System.out.println(tiquete2);
         System.out.println(tiquete3);
+        
+        // Crear objetos Atraccion
+        Atraccion atraccion1 = new Atraccion(1, "Montaña Rusa", "Una montaña rusa de alta velocidad.", "Adrenalina", "No apto para personas con problemas de corazón", "Habilitada", 1.2);
+        Atraccion atraccion2 = new Atraccion(2, "Carrusel", "Un carrusel tradicional para toda la familia.", "Familiar", "Apto para todas las edades", "Mantenimiento", 0.9);
+        Atraccion atraccion3 = new Atraccion( "Bungee Jumping", "Salto en bungee desde una plataforma alta.", "Adrenalina", "Solo para personas mayores de 18 años", "Daño", 1.5);
+
+        // Mostrar información de las atracciones
+        System.out.println(atraccion1);
+        System.out.println(atraccion2);
+        System.out.println(atraccion3);
         
         Visitas visita1 = new Visitas( cliente1, tiquete1);
         
@@ -61,11 +72,13 @@ public class ParqueSalitreMagico {
         
         VisitasControlador visitasControlador = new VisitasControlador();
         
+        AtraccionControlador atraccionControlador = new AtraccionControlador();
+        
+        atraccionControlador.insertarAtraccion(atraccion3);
+        
 
         
-        
-        
-        System.out.println(tiqueteControlador.obtenerTodosLosTiquetes());
+       
              
     }
 }
