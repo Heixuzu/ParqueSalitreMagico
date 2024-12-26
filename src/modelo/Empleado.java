@@ -13,8 +13,15 @@ public class Empleado extends Persona {
     // Atributos
     private String horario;
     private String tipo; // Administrativos, Logística, Publicidad, Operador, Mantenimiento
-
-    // Constructor
+    
+    //Constructor para insertar
+    public Empleado(int cedula, String nombre, int telefono, String email, String horario, String tipo) {
+        super(cedula, nombre, telefono, email); // Llama al constructor de la clase Persona
+        setHorario(horario); // Validar horario al asignarlo
+        setTipo(tipo);       // Validar tipo al asignarlo
+    }    
+    
+    // Constructor para leer, actualizar y eiminar
     public Empleado(int id, int cedula, String nombre, int telefono, String email, String horario, String tipo) {
         super(id, cedula, nombre, telefono, email); // Llama al constructor de la clase Persona
         setHorario(horario); // Validar horario al asignarlo

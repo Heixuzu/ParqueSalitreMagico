@@ -16,8 +16,16 @@ public class Persona {
     private String nombre;
     private int telefono;
     private String email;
-
-    // Constructor
+    
+    // Constructor para insertar
+    public Persona(int cedula, String nombre, int telefono, String email) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.email = email;
+    }
+    
+    // Constructor para leer, actualizar y eiminar
     public Persona(int id, int cedula, String nombre, int telefono, String email) {
         this.id = id;
         this.cedula = cedula;

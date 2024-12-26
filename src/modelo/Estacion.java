@@ -16,8 +16,14 @@ public class Estacion {
     private int id;
     private String ubicacion;
     private String estado; // "Habilitada" o "Inhabilitada"
-
-    // Constructor
+    
+    //Constructor para insertar
+    public Estacion(String ubicacion, String estado) {
+        this.ubicacion = ubicacion;
+        setEstado(estado); // Validar estado
+    }
+    
+    // Constructor para leer, actualizar y eiminar
     public Estacion(int id, String ubicacion, String estado) {
         this.id = id;
         this.ubicacion = ubicacion;

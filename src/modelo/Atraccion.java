@@ -14,7 +14,18 @@ public class Atraccion {
     private String estado; // Ej.: "Habilitada", "Daño", "Mantenimiento"
     private double alturaMinima; // En metros
 
-    // Constructor
+    
+    // Constructor para insertar
+    public Atraccion(String nombre, String descripcion, String clasificacion, String condicionesUso, String estado, double alturaMinima) {
+        this.nombre = nombre; // Asignar el nombre
+        this.descripcion = descripcion;
+        setClasificacion(clasificacion); // Validar clasificación
+        this.condicionesUso = condicionesUso;
+        setEstado(estado); // Validar estado
+        this.alturaMinima = alturaMinima;
+    }    
+    
+    // Constructor para leer, actualizar y eiminar
     public Atraccion(int id, String nombre, String descripcion, String clasificacion, String condicionesUso, String estado, double alturaMinima) {
         this.id = id;
         this.nombre = nombre; // Asignar el nombre

@@ -17,7 +17,16 @@ public class Tiquete {
     private String estadoAdquisicion; // Ej.: "Activo", "Usado", "Cancelado", etc.
     private Cliente clienteAsociado; // Objeto Cliente en lugar de un ID de cliente
 
-    // Constructor
+    
+    // Constructor para insertar
+    public Tiquete(String tipo, LocalDate fechaAdquisicion, String estadoAdquisicion, Cliente clienteAsociado) {
+        this.tipo = tipo;
+        this.fechaAdquisicion = fechaAdquisicion;
+        setEstadoAdquisicion(estadoAdquisicion); // Validar estado al asignarlo
+        this.clienteAsociado = clienteAsociado;
+    }       
+    
+    // Constructor para leer, actualizar y eliminar
     public Tiquete(int id, String tipo, LocalDate fechaAdquisicion, String estadoAdquisicion, Cliente clienteAsociado) {
         this.id = id;
         this.tipo = tipo;

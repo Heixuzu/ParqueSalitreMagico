@@ -13,8 +13,14 @@ public class Visitas {
     private int id;
     private Cliente clienteAsociado; // Instancia de la clase Cliente
     private Tiquete tiqueteAsociado; // Instancia de la clase Tiquete
-
-    // Constructor
+    
+    // Constructor para insertar
+    public Visitas(Cliente clienteAsociado, Tiquete tiqueteAsociado) {
+        this.clienteAsociado = clienteAsociado;
+        this.tiqueteAsociado = tiqueteAsociado;
+    }
+    
+    // Constructor para leer, actualizar y eiminar
     public Visitas(int id, Cliente clienteAsociado, Tiquete tiqueteAsociado) {
         this.id = id;
         this.clienteAsociado = clienteAsociado;
