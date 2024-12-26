@@ -25,6 +25,10 @@ public class Tiquete {
         setEstadoAdquisicion(estadoAdquisicion); // Validar estado al asignarlo
         this.clienteAsociado = clienteAsociado;
     }
+    
+    public Tiquete(){
+        
+    }
 
     // Getters
     public int getId() {

@@ -8,48 +8,24 @@ package modelo;
  *
  * @author Heidy
  */
-public class Empleado {
+
+public class Empleado extends Persona {
     // Atributos
-    private int id;
-    private int cedula; // Ahora en la segunda posición
-    private String nombre;
-    private int telefono;
-    private String email;
     private String horario;
     private String tipo; // Administrativos, Logística, Publicidad, Operador, Mantenimiento
 
     // Constructor
     public Empleado(int id, int cedula, String nombre, int telefono, String email, String horario, String tipo) {
-        this.id = id;
-        this.cedula = cedula; // Asignar la cédula
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.email = email;
-        this.horario = horario;
-        setTipo(tipo); // Validar tipo al asignarlo
+        super(id, cedula, nombre, telefono, email); // Llama al constructor de la clase Persona
+        setHorario(horario); // Validar horario al asignarlo
+        setTipo(tipo);       // Validar tipo al asignarlo
+    }
+    
+    public Empleado() {
+        
     }
 
     // Getters
-    public int getId() {
-        return id;
-    }
-
-    public int getCedula() {
-        return cedula; // Obtener la cédula
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public int getTelefono() {
-        return telefono;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
     public String getHorario() {
         return horario;
     }
@@ -59,28 +35,15 @@ public class Empleado {
     }
 
     // Setters
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setCedula(int cedula) {
-        this.cedula = cedula; // Asignar cédula
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public void setHorario(String horario) {
-        this.horario = horario;
+        // Validar que el horario sea "mañana", "tarde" o "noche"
+        if (horario.equalsIgnoreCase("Mañana") || 
+            horario.equalsIgnoreCase("Tarde") || 
+            horario.equalsIgnoreCase("Noche")) {
+            this.horario = horario.toLowerCase(); // Normaliza a minúsculas
+        } else {
+            throw new IllegalArgumentException("Horario no válido. Debe ser 'mañana', 'tarde' o 'noche'.");
+        }
     }
 
     public void setTipo(String tipo) {
@@ -100,11 +63,11 @@ public class Empleado {
     @Override
     public String toString() {
         return "Empleado{" +
-               "id=" + id +
-               ", cedula=" + cedula +  // Mostrar la cédula aquí
-               ", nombre='" + nombre + '\'' +
-               ", telefono=" + telefono +
-               ", email='" + email + '\'' +
+               "id=" + getId() +
+               ", cedula=" + getCedula() +
+               ", nombre='" + getNombre() + '\'' +
+               ", telefono=" + getTelefono() +
+               ", email='" + getEmail() + '\'' +
                ", horario='" + horario + '\'' +
                ", tipo='" + tipo + '\'' +
                '}';

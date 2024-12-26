@@ -20,6 +20,10 @@ public class Visitas {
         this.clienteAsociado = clienteAsociado;
         this.tiqueteAsociado = tiqueteAsociado;
     }
+    
+    public Visitas(){
+        
+    }
 
     // Getters
     public int getId() {

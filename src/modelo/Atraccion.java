@@ -24,6 +24,10 @@ public class Atraccion {
         setEstado(estado); // Validar estado
         this.alturaMinima = alturaMinima;
     }
+    
+    public Atraccion(){
+        
+    }
 
     // Getters
     public int getId() {
