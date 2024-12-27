@@ -1,11 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/modelo/Cliente.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/dao/EstacionDAOImpl.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/modelo/Persona.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/dao/VisitasDAO.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/dao/ClienteDAOImpl.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/dao/EstacionDAO.java</file>
             <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/modelo/Visitas.java</file>
             <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/modelo/Atraccion.java</file>
             <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/main/ParqueSalitreMagico.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/controlador/EstacionControlador.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/dao/VisitasDAOImpl.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/dao/AtraccionDAOImpl.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/modelo/Cliente.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/vista/Inicio.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/controlador/EmpleadoControlador.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/dao/ClienteDAO.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/controlador/ClienteControlador.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/dao/EmpleadoDAO.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/dao/TiqueteDAO.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/controlador/TiqueteControlador.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/basededatos/ConexionDB.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/modelo/Estacion.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/controlador/AtraccionControlador.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/dao/EmpleadoDAOImpl.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/test/Pruebas.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/modelo/Tiquete.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/controlador/VisitasControlador.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/dao/TiqueteDAOImpl.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/dao/AtraccionDAO.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/vista/VistaCliente.java</file>
+            <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/vista/VistaAtracciones.java</file>
             <file>file:/C:/Users/jhon/Documents/NetBeansProjects/ParqueSalitreMagico/src/modelo/Empleado.java</file>
         </group>
     </open-files>
