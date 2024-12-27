@@ -14,6 +14,7 @@ import modelo.Atraccion;
 public interface AtraccionDAO {
     void insertar(Atraccion atraccion);
     Atraccion leerPorId(int id);
+    Atraccion leerPorNombre(String id);
     List<Atraccion> leerTodas();
     void actualizar(Atraccion atraccion);
     void eliminar(int id);

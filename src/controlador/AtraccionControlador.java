@@ -11,6 +11,7 @@ package controlador;
 
 import dao.AtraccionDAO;
 import dao.AtraccionDAOImpl;
+import java.util.ArrayList;
 import modelo.Atraccion;
 import java.util.List;
 
@@ -70,7 +71,35 @@ public class AtraccionControlador {
     public List<Atraccion> obtenerTodasLasAtracciones() {
         return atraccionDAO.leerTodas();
     }
+    
+    public Atraccion obtenerAtraccionPorNombre(String nombre) {
+        if (nombre == null || nombre.isEmpty()) {
+            throw new IllegalArgumentException("El nombre de la atracción no puede ser nulo ni vacío");
+        }
 
+        // Llamamos al DAO para obtener la atracción por nombre
+        Atraccion atraccion = atraccionDAO.leerPorNombre(nombre);
+        if (atraccion == null) {
+            System.out.println("No se encontró ninguna atracción con el nombre: " + nombre);
+        }
+        return atraccion;
+    }
+    
+   // Método para obtener todas las atracciones habilitadas
+    public List<Atraccion> obtenerAtraccionesHabilitadas() {
+        List<Atraccion> todasLasAtracciones = atraccionDAO.leerTodas();  // Obtener todas las atracciones
+        List<Atraccion> atraccionesHabilitadas = new ArrayList<>();  // Crear una lista para las atracciones habilitadas
+
+        // Filtrar las atracciones habilitadas
+        for (Atraccion atraccion : todasLasAtracciones) {
+            if ("Habilitada".equalsIgnoreCase(atraccion.getEstado())) {  // Verificar si el estado es "Habilitada"
+                atraccionesHabilitadas.add(atraccion);  // Agregar a la lista de habilitadas
+            }
+        }
+
+        return atraccionesHabilitadas;  // Devolver la lista de atracciones habilitadas
+    } 
+    
     // Método para actualizar una atracción
     public void actualizarAtraccion(int id, Atraccion nuevaAtraccion) {
         if (id <= 0 || nuevaAtraccion == null) {
@@ -130,4 +159,30 @@ public class AtraccionControlador {
         atraccionDAO.eliminar(id);
         System.out.println("Atracción eliminada exitosamente.");
     }
+    
+    // Método para comprobar si un cliente puede ingresar a la atracción según su altura
+    public boolean comprobarAlturaMinima(double alturaCliente, int idAtraccion) {
+        // Validar la altura del cliente
+        if (alturaCliente <= 0) {
+            throw new IllegalArgumentException("La altura del cliente debe ser mayor que 0");
+        }
+
+        // Obtener la atracción por ID
+        Atraccion atraccion = atraccionDAO.leerPorId(idAtraccion);
+        if (atraccion == null) {
+            System.out.println("No se encontró ninguna atracción con ID: " + idAtraccion);
+            return false;  // Si no se encuentra la atracción, devolvemos false
+        }
+
+        // Comparar la altura mínima de la atracción con la altura del cliente
+        boolean cumpleAlturaMinima = alturaCliente >= atraccion.getAlturaMinima();  // Retorna true si la altura del cliente es suficiente
+
+        if (!cumpleAlturaMinima) {
+            // Si no cumple, se podría agregar un log o manejar de otra manera
+            System.out.println("El cliente no cumple con la altura mínima para la atracción.");
+        }
+
+        return cumpleAlturaMinima;
+    }
+
 }

@@ -314,7 +314,10 @@ public class VistaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEstacionActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        VistaAtracciones vistaAtracciones = new VistaAtracciones();
+        vistaAtracciones.setLocationRelativeTo(null);
+        vistaAtracciones.setVisible(true);      
     }//GEN-LAST:event_btnIngresarActionPerformed
     
     // Método para configurar el JComboBox con las estaciones habilitadas

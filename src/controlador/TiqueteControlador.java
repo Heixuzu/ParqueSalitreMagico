@@ -118,4 +118,20 @@ public class TiqueteControlador {
         tiqueteDAO.eliminar(id);
         System.out.println("Tiquete eliminado exitosamente.");
     }
+    
+    public double obtenerEstaturaClientePorTiquete(int tiqueteId) {
+    // Obtener el Tiquete por ID
+    Tiquete tiquete = tiqueteDAO.leerPorId(tiqueteId);
+    
+    if (tiquete != null) {
+        // Obtener el cliente asociado al tiquete
+        Cliente cliente = tiquete.getClienteAsociado();
+        
+        // Retornar la estatura del cliente
+        return cliente.getEstatura();
+    } else {
+        System.out.println("No se encontró el tiquete con ID: " + tiqueteId);
+        return -1;  // Retorna un valor negativo o algún valor indicativo de que no se encontró el tiquete
+    }
+}
 }

@@ -4,6 +4,14 @@
  */
 package vista;
 
+import controlador.AtraccionControlador;
+import controlador.TiqueteControlador;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import modelo.Atraccion;
+import modelo.Tiquete;
+
 /**
  *
  * @author Heidy
@@ -15,6 +23,7 @@ public class VistaAtracciones extends javax.swing.JFrame {
      */
     public VistaAtracciones() {
         initComponents();
+        cargarAtraccionesHabilitadas();
     }
 
     /**
@@ -29,6 +38,18 @@ public class VistaAtracciones extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtTiquete = new javax.swing.JTextField();
+        txtAtraccion = new javax.swing.JComboBox<>();
+        btnIngresar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtAlturaMinima = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtDescripcion = new javax.swing.JTextPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtCondiciones = new javax.swing.JTextPane();
+        jLabel6 = new javax.swing.JLabel();
+        txtClasificacion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,19 +58,61 @@ public class VistaAtracciones extends javax.swing.JFrame {
 
         jLabel1.setText("Ingresa el número de tu tiquete");
 
+        txtAtraccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txtAtraccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAtraccionActionPerformed(evt);
+            }
+        });
+
+        btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Descripción");
+
+        jLabel4.setText("Condiciones de uso");
+
+        jLabel5.setText("Altura mínima");
+
+        jScrollPane3.setViewportView(txtDescripcion);
+
+        jScrollPane4.setViewportView(txtCondiciones);
+
+        jLabel6.setText("Tipo");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnIngresar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAtraccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTiquete, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
-                        .addComponent(txtTiquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(229, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtAlturaMinima)
+                            .addComponent(txtClasificacion))))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -60,12 +123,93 @@ public class VistaAtracciones extends javax.swing.JFrame {
                     .addComponent(txtTiquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2)
-                .addContainerGap(294, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(txtAtraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel6))
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addGap(4, 4, 4)
+                        .addComponent(txtAlturaMinima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        String atraccionSeleccionada = (String) txtAtraccion.getSelectedItem();
+        int tiqueteId = Integer.parseInt(txtTiquete.getText());
+        
+        // Instanciar controladores
+        AtraccionControlador atraccionControlador = new AtraccionControlador();
+        TiqueteControlador tiqueteControlador = new TiqueteControlador();
+          
+        // Obtener la atracción seleccionada
+         Atraccion atraccion = atraccionControlador.obtenerAtraccionPorNombre(atraccionSeleccionada);
+    
+        // Obtener la estatura del cliente asociada al tiquete
+        double estatura = tiqueteControlador.obtenerEstaturaClientePorTiquete(tiqueteId);
+        
+        // Verificar si el cliente cumple con la altura mínima
+        boolean cumpleAlturaMinima = atraccionControlador.comprobarAlturaMinima(estatura, atraccion.getId());
+        
+        if (cumpleAlturaMinima) {
+            // El cliente cumple con la altura mínima
+            JOptionPane.showMessageDialog(this, "¡Disfruta de " + atraccionSeleccionada + "!");
+        } else {
+            // El cliente no cumple con la altura mínima
+            JOptionPane.showMessageDialog(null, "No cumples con la altura mínima requerida para esta atracción.",
+                                          "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void txtAtraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAtraccionActionPerformed
+        String atraccionSeleccionada = (String) txtAtraccion.getSelectedItem();
+        
+        AtraccionControlador atraccionControlador = new AtraccionControlador();
+        
+        Atraccion atraccion = atraccionControlador.obtenerAtraccionPorNombre(atraccionSeleccionada);
+        
+        if (atraccion != null) {
+            txtDescripcion.setText(atraccion.getDescripcion());
+            txtCondiciones.setText(atraccion.getCondicionesUso());
+            txtClasificacion.setText(atraccion.getClasificacion());
+            txtAlturaMinima.setText(String.valueOf(atraccion.getAlturaMinima()));
+        }
+    }//GEN-LAST:event_txtAtraccionActionPerformed
+    
+        public void cargarAtraccionesHabilitadas() {
+        AtraccionControlador atraccionControlador = new AtraccionControlador();
+
+        // Crear un modelo para el JComboBox que contenga solo Strings
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+
+        // Obtener la lista de estaciones habilitadas
+        List<Atraccion> atraccionesHabilitadas = atraccionControlador.obtenerAtraccionesHabilitadas();
+
+        // Agregar las ubicaciones de las estaciones habilitadas al modelo del JComboBox
+        for (Atraccion atraccion : atraccionesHabilitadas) {
+            if (atraccion != null && atraccion.getEstado().equals("Habilitada")) { // Verificar que no sea null y esté habilitada
+                model.addElement(atraccion.getNombre());  // Agrega el nombre (String) de la atracción al modelo
+            }
+        }
+
+        // Establecer el modelo en el JComboBox
+        txtAtraccion.setModel(model);
+    }
     /**
      * @param args the command line arguments
      */
@@ -102,8 +246,20 @@ public class VistaAtracciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIngresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextField txtAlturaMinima;
+    private javax.swing.JComboBox<String> txtAtraccion;
+    private javax.swing.JTextField txtClasificacion;
+    private javax.swing.JTextPane txtCondiciones;
+    private javax.swing.JTextPane txtDescripcion;
     private javax.swing.JTextField txtTiquete;
     // End of variables declaration//GEN-END:variables
 }

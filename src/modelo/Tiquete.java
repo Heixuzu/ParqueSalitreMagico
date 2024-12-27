@@ -103,4 +103,5 @@ public class Tiquete {
                ", clienteAsociado=" + clienteAsociado.getNombre() + // Muestra el nombre del cliente
                '}';
     }
+
 }

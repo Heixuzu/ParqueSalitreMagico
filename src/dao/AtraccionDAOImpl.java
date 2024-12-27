@@ -64,6 +64,32 @@ public class AtraccionDAOImpl implements AtraccionDAO {
         }
         return atraccion;
     }
+    
+    // Método para obtener una atracción por su nombre
+    public Atraccion leerPorNombre(String nombre) {
+        String sql = "SELECT * FROM atraccion WHERE nombre = ?";
+        Atraccion atraccion = null;
+        try (Connection conn = ConexionDB.getConexion();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, nombre);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    atraccion = new Atraccion(
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getString("descripcion"),
+                        rs.getString("clasificacion"),
+                        rs.getString("condicionesuso"),
+                        rs.getString("estado"),
+                        rs.getDouble("alturaminima")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return atraccion;
+    }
 
     @Override
     public List<Atraccion> leerTodas() {
@@ -120,5 +146,6 @@ public class AtraccionDAOImpl implements AtraccionDAO {
             e.printStackTrace();
         }
     }
+
 }
 
