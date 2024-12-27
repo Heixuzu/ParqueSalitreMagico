@@ -24,6 +24,7 @@ public class AtraccionDAOImpl implements AtraccionDAO {
     public void insertar(Atraccion atraccion) {
         String sql = "INSERT INTO atraccion (nombre, descripcion, clasificacion, condicionesuso, estado, alturaminima) " +
                      "VALUES (?, ?, ?, ?, ?, ?)";
+        
         try (Connection conn = ConexionDB.getConexion();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, atraccion.getNombre());

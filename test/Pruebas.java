@@ -1,4 +1,10 @@
 
+import controlador.AtraccionControlador;
+import controlador.ClienteControlador;
+import controlador.EmpleadoControlador;
+import controlador.EstacionControlador;
+import controlador.TiqueteControlador;
+import controlador.VisitasControlador;
 import java.time.LocalDate;
 import modelo.Atraccion;
 import modelo.Cliente;
@@ -29,9 +35,9 @@ public class Pruebas {
         System.out.println(cliente3);
         
         // Crear objetos Tiquete
-        Tiquete tiquete1 = new Tiquete(101, "Adulto", LocalDate.now(), "Activo", cliente1);
-        Tiquete tiquete2 = new Tiquete(102, "Adulto", LocalDate.now().minusDays(5), "Usado", cliente2);
-        Tiquete tiquete3 = new Tiquete(103, "Niño", LocalDate.now().minusMonths(1), "Cancelado", cliente3);
+        Tiquete tiquete1 = new Tiquete(101, "Premium", LocalDate.now(), "Activo", cliente1);
+        Tiquete tiquete2 = new Tiquete(102, "Exclusivo", LocalDate.now().minusDays(5), "Usado", cliente2);
+        Tiquete tiquete3 = new Tiquete(103, "Estandar", LocalDate.now().minusMonths(1), "Cancelado", cliente3);
 
         // Mostrar los objetos
         System.out.println(tiquete1);
@@ -60,9 +66,9 @@ public class Pruebas {
         System.out.println(empleado3);
         
         // Crear estaciones
-        Estacion estacion1 = new Estacion(1, "Plaza Central", "Habilitada");
-        Estacion estacion2 = new Estacion(2, "Avenida Libertador", "Inhabilitada");
-        Estacion estacion3 = new Estacion(3, "Estadio Nacional", "Habilitada");
+        Estacion estacion1 = new Estacion(1, "Punto Central", "Habilitada");
+        Estacion estacion2 = new Estacion(2, "Estación Oasis", "Inhabilitada");
+        Estacion estacion3 = new Estacion(3, "Estacion Alegría", "Habilitada");
 
         // Mostrar las estaciones
         System.out.println(estacion1);
@@ -70,14 +76,39 @@ public class Pruebas {
         System.out.println(estacion3);
         
         // Crear objetos Atraccion
-        Atraccion atraccion1 = new Atraccion(1, "Montaña Rusa", "Una montaña rusa de alta velocidad.", "Adrenalina", "No apto para personas con problemas de corazón", "Habilitada", 1.2);
-        Atraccion atraccion2 = new Atraccion(2, "Carrusel", "Un carrusel tradicional para toda la familia.", "Familiar", "Apto para todas las edades", "Mantenimiento", 0.9);
-        Atraccion atraccion3 = new Atraccion(3, "Bungee Jumping", "Salto en bungee desde una plataforma alta.", "Adrenalina", "Solo para personas mayores de 18 años", "Daño", 1.5);
+        Atraccion atraccion1 = new Atraccion(1, "Montaña Rusa", "Una montaña rusa de alta velocidad.", "Adrenalina", "No apto para personas con problemas de corazón", "Habilitada", 1.6);
+        Atraccion atraccion2 = new Atraccion(2, "Carrusel", "Un carrusel tradicional para toda la familia.", "Familiar", "Apto para todas las edades", "Habilitada", 1.2);
+        Atraccion atraccion3 = new Atraccion(3, "Bungee Jumping", "Salto en bungee desde una plataforma alta.", "Adrenalina", "No apto para personas con problemas de corazón", "Habilitada", 1.5);
 
         // Mostrar información de las atracciones
         System.out.println(atraccion1);
         System.out.println(atraccion2);
         System.out.println(atraccion3);
+        
+        // Crear el controlador
+        TiqueteControlador tiqueteControlador = new TiqueteControlador();
+        
+        VisitasControlador visitasControlador = new VisitasControlador();
+        
+        AtraccionControlador atraccionControlador = new AtraccionControlador();
+        
+        ClienteControlador clienteControlador = new ClienteControlador();
+        
+        EmpleadoControlador empleadoControlador = new EmpleadoControlador();
+        
+        EstacionControlador estacionControlador = new EstacionControlador();
+        
+        atraccionControlador.insertarAtraccion(atraccion1);
+        atraccionControlador.insertarAtraccion(atraccion2);
+        atraccionControlador.insertarAtraccion(atraccion3);
+        
+        System.out.println(tiqueteControlador.obtenerTodosLosTiquetes());     
+        
+        System.out.println(visitasControlador.obtenerTodasLasVisitas());
+        
+        System.out.println(clienteControlador.obtenerTodosLosClientes());
+        
+        System.out.println(empleadoControlador.obtenerTodosLosEmpleados());
 
     }
 }

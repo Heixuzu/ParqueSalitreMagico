@@ -76,10 +76,16 @@ public class Cliente extends Persona {
 
     @Override
     public String toString() {
-        return super.toString() + ", Cliente{" +
-               "estatura=" + estatura +
+        return "Cliente{" +
+               "id=" + getId() +
+               ", cedula=" + getCedula() +
+               ", nombre='" + getNombre() + '\'' +
+               ", telefono=" + getTelefono() +
+               ", email='" + getEmail() + '\'' +
+               ", estatura=" + estatura +
                ", edad=" + edad +
                ", contacto=" + (contacto != null ? contacto : "No aplica") +
                '}';
     }
+
 }

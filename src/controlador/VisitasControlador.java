@@ -11,8 +11,6 @@ package controlador;
 
 import dao.VisitasDAO;
 import dao.VisitasDAOImpl;
-import modelo.Cliente;
-import modelo.Tiquete;
 import modelo.Visitas;
 
 import java.util.List;
@@ -26,14 +24,10 @@ public class VisitasControlador {
     }
 
     // Método para insertar una nueva visita
-    public void insertarVisita(Cliente cliente, Tiquete tiquete) {
-        if (cliente == null || tiquete == null) {
-            throw new IllegalArgumentException("El cliente y el tiquete no pueden ser nulos");
+    public void insertarVisita(Visitas visita) {
+        if (visita == null) {
+            throw new IllegalArgumentException("La visita no puede ser nula");
         }
-
-        Visitas visita = new Visitas();
-        visita.setClienteAsociado(cliente);
-        visita.setTiqueteAsociado(tiquete);
 
         visitasDAO.insertar(visita);
         System.out.println("Visita insertada exitosamente.");
@@ -58,8 +52,8 @@ public class VisitasControlador {
     }
 
     // Método para actualizar una visita
-    public void actualizarVisita(int id, Cliente nuevoCliente, Tiquete nuevoTiquete) {
-        if (id <= 0 || nuevoCliente == null || nuevoTiquete == null) {
+    public void actualizarVisita(int id, Visitas nuevaVisita) {
+        if (id <= 0 || nuevaVisita == null) {
             throw new IllegalArgumentException("Datos inválidos para actualizar la visita");
         }
 
@@ -69,8 +63,8 @@ public class VisitasControlador {
             return;
         }
 
-        visita.setClienteAsociado(nuevoCliente);
-        visita.setTiqueteAsociado(nuevoTiquete);
+        visita.setClienteAsociado(nuevaVisita.getClienteAsociado());
+        visita.setTiqueteAsociado(nuevaVisita.getTiqueteAsociado());
 
         visitasDAO.actualizar(visita);
         System.out.println("Visita actualizada exitosamente.");
@@ -92,4 +86,3 @@ public class VisitasControlador {
         System.out.println("Visita eliminada exitosamente.");
     }
 }
-

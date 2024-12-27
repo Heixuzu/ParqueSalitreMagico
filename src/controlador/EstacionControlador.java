@@ -9,6 +9,7 @@ package controlador;
  */
 import dao.EstacionDAO;
 import dao.EstacionDAOImpl;
+import java.util.ArrayList;
 import modelo.Estacion;
 import java.util.List;
 
@@ -21,21 +22,23 @@ public class EstacionControlador {
     }
 
     // Método para insertar una nueva estación
-    public void insertarEstacion(String ubicacion, String estado) {
-        if (ubicacion == null || ubicacion.isEmpty() || estado == null || estado.isEmpty()) {
+    public void insertarEstacion(Estacion estacion) {
+        if (estacion == null) {
+            throw new IllegalArgumentException("La estación no puede ser nula");
+        }
+        if (estacion.getUbicacion() == null || estacion.getUbicacion().isEmpty() || 
+            estacion.getEstado() == null || estacion.getEstado().isEmpty()) {
             throw new IllegalArgumentException("Ubicación y estado no pueden estar vacíos");
         }
-        if (!estado.equalsIgnoreCase("Habilitada") && !estado.equalsIgnoreCase("Deshabilitada")) {
-            throw new IllegalArgumentException("El estado debe ser 'Habilitada' o 'Deshabilitada'");
+        if (!estacion.getEstado().equalsIgnoreCase("Habilitada") && 
+            !estacion.getEstado().equalsIgnoreCase("Inhabilitada")) {
+            throw new IllegalArgumentException("El estado debe ser 'Habilitada' o 'Inhabilitada'");
         }
-
-        Estacion estacion = new Estacion();
-        estacion.setUbicacion(ubicacion);
-        estacion.setEstado(estado);
 
         estacionDAO.insertar(estacion);
         System.out.println("Estación insertada exitosamente.");
     }
+
 
     // Método para leer una estación por su ID
     public Estacion obtenerEstacionPorId(int id) {
@@ -53,6 +56,20 @@ public class EstacionControlador {
     // Método para obtener todas las estaciones
     public List<Estacion> obtenerTodasLasEstaciones() {
         return estacionDAO.leerTodas();
+    }
+    
+    public List<Estacion> obtenerEstacionesHabilitadas() {
+        List<Estacion> todasLasEstaciones = obtenerTodasLasEstaciones(); // Obtiene todas las estaciones
+        List<Estacion> estacionesHabilitadas = new ArrayList<>();
+
+        // Filtrar solo las estaciones habilitadas
+        for (Estacion estacion : todasLasEstaciones) {
+            if (estacion.getEstado().equalsIgnoreCase("Habilitada")) {
+                estacionesHabilitadas.add(estacion);
+            }
+        }
+
+        return estacionesHabilitadas;
     }
 
     // Método para actualizar una estación

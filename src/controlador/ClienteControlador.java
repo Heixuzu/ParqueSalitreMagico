@@ -61,6 +61,19 @@ public class ClienteControlador {
         }
         return cliente;
     }
+    
+    // Método para obtener un cliente por su cédula
+    public Cliente obtenerClientePorCedula(int cedula) {
+        if (cedula <= 0) {
+            throw new IllegalArgumentException("La cédula debe ser mayor que 0");
+        }
+
+        Cliente cliente = clienteDAO.leerPorCedula(cedula);
+        if (cliente == null) {
+            System.out.println("No se encontró ningún cliente con cédula: " + cedula);
+        }
+        return cliente;
+    }
 
     // Método para obtener todos los clientes
     public List<Cliente> obtenerTodosLosClientes() {

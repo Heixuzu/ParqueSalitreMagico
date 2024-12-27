@@ -24,7 +24,7 @@ public class TiqueteControlador {
     }
 
     // Método para insertar un nuevo tiquete
-    public void insertarTiquete(Tiquete tiquete) {
+    public Tiquete insertarTiquete(Tiquete tiquete) {
         if (tiquete == null) {
             throw new IllegalArgumentException("El tiquete no puede ser nulo");
         }
@@ -41,9 +41,16 @@ public class TiqueteControlador {
             throw new IllegalArgumentException("El cliente asociado no puede ser nulo");
         }
 
-        tiqueteDAO.insertar(tiquete);
-        System.out.println("Tiquete insertado exitosamente.");
+        // Llamar al método insertar del DAO y obtener el tiquete con el id asignado
+        Tiquete tiqueteConId = tiqueteDAO.insertar(tiquete);
+
+        // Imprimir un mensaje de éxito
+        System.out.println("Tiquete insertado exitosamente con ID: " + tiqueteConId.getId());
+
+        // Devolver el objeto tiquete con el ID asignado
+        return tiqueteConId;
     }
+
 
     // Método para leer un tiquete por su ID
     public Tiquete obtenerTiquetePorId(int id) {

@@ -19,17 +19,17 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 
     @Override
     public void insertar(Empleado empleado) {
-        String sql = "INSERT INTO Empleado (cedula, nombre, telefono, email, horario, tipo) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Empleado (cedula, nombre, telefono, email, horario, tipo)" + " VALUES (?, ?, ?, ?, ?, ?)";
         
         try (Connection conn = ConexionDB.getConexion();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, empleado.getCedula());
-            ps.setString(2, empleado.getNombre());
-            ps.setInt(3, empleado.getTelefono());
-            ps.setString(4, empleado.getEmail());
-            ps.setString(5, empleado.getHorario());
-            ps.setString(6, empleado.getTipo());
-            ps.executeUpdate();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, empleado.getCedula());
+            stmt.setString(2, empleado.getNombre());
+            stmt.setInt(3, empleado.getTelefono());
+            stmt.setString(4, empleado.getEmail());
+            stmt.setString(5, empleado.getHorario());
+            stmt.setString(6, empleado.getTipo());
+            stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -37,14 +37,14 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 
     @Override
     public Empleado leerPorId(int id) {
-        String sql = "SELECT * FROM Empleado WHERE id = ?";
+        String sql = "SELECT * FROM Empleado WHERE id = ?"; 
         Empleado empleado = null;
         
         try (Connection conn = ConexionDB.getConexion();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
                 empleado = new Empleado(
@@ -70,8 +70,8 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
         List<Empleado> empleados = new ArrayList<>();
         
         try (Connection conn = ConexionDB.getConexion();
-             PreparedStatement ps = conn.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
                 Empleado empleado = new Empleado(
@@ -87,9 +87,7 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new RuntimeException("Error al obtener todos los empleados", e);
-        }
-        
+        }  
         return empleados;
     }
 
@@ -98,21 +96,21 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
         String sql = "UPDATE Empleado SET cedula = ?, nombre = ?, telefono = ?, email = ?, horario = ?, tipo = ? WHERE id = ?";
         
         try (Connection conn = ConexionDB.getConexion();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            ps.setInt(1, empleado.getCedula());
-            ps.setString(2, empleado.getNombre());
-            ps.setInt(3, empleado.getTelefono());
-            ps.setString(4, empleado.getEmail());
-            ps.setString(5, empleado.getHorario());
-            ps.setString(6, empleado.getTipo());
-            ps.setInt(7, empleado.getId());
+            stmt.setInt(1, empleado.getCedula());
+            stmt.setString(2, empleado.getNombre());
+            stmt.setInt(3, empleado.getTelefono());
+            stmt.setString(4, empleado.getEmail());
+            stmt.setString(5, empleado.getHorario());
+            stmt.setString(6, empleado.getTipo());
+            stmt.setInt(7, empleado.getId());
 
-            ps.executeUpdate();
-            System.out.println("Empleado actualizado correctamente.");
+            stmt.executeUpdate();
+   
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new RuntimeException("Error al actualizar el empleado", e);
+          
         }
     }
 
@@ -121,11 +119,11 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
         String sql = "DELETE FROM Empleado WHERE id = ?";
         
         try (Connection conn = ConexionDB.getConexion();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            ps.setInt(1, id);
-            ps.executeUpdate();
-            System.out.println("Empleado eliminado correctamente.");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+            
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException("Error al eliminar el empleado", e);

@@ -21,10 +21,10 @@ public class EstacionDAOImpl implements EstacionDAO {
     public void insertar(Estacion estacion) {
         String sql = "INSERT INTO Estacion (ubicacion, estado) VALUES (?, ?)";
         try (Connection connection = ConexionDB.getConexion();
-             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setString(1, estacion.getUbicacion());
-            preparedStatement.setString(2, estacion.getEstado());
-            preparedStatement.executeUpdate();
+             PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, estacion.getUbicacion());
+            stmt.setString(2, estacion.getEstado());
+            stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -35,9 +35,9 @@ public class EstacionDAOImpl implements EstacionDAO {
         Estacion estacion = null;
         String sql = "SELECT * FROM Estacion WHERE id = ?";
         try (Connection connection = ConexionDB.getConexion();
-             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setInt(1, id);
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+             PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            try (ResultSet resultSet = stmt.executeQuery()) {
                 if (resultSet.next()) {
                     estacion = new Estacion();
                     estacion.setId(resultSet.getInt("id"));
@@ -56,8 +56,8 @@ public class EstacionDAOImpl implements EstacionDAO {
         List<Estacion> estaciones = new ArrayList<>();
         String sql = "SELECT * FROM Estacion";
         try (Connection connection = ConexionDB.getConexion();
-             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
+             PreparedStatement stmt = connection.prepareStatement(sql);
+             ResultSet resultSet = stmt.executeQuery()) {
             while (resultSet.next()) {
                 Estacion estacion = new Estacion();
                 estacion.setId(resultSet.getInt("id"));
@@ -75,11 +75,11 @@ public class EstacionDAOImpl implements EstacionDAO {
     public void actualizar(Estacion estacion) {
         String sql = "UPDATE Estacion SET ubicacion = ?, estado = ? WHERE id = ?";
         try (Connection connection = ConexionDB.getConexion();
-             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setString(1, estacion.getUbicacion());
-            preparedStatement.setString(2, estacion.getEstado());
-            preparedStatement.setInt(3, estacion.getId());
-            preparedStatement.executeUpdate();
+             PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, estacion.getUbicacion());
+            stmt.setString(2, estacion.getEstado());
+            stmt.setInt(3, estacion.getId());
+            stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -89,9 +89,9 @@ public class EstacionDAOImpl implements EstacionDAO {
     public void eliminar(int id) {
         String sql = "DELETE FROM Estacion WHERE id = ?";
         try (Connection connection = ConexionDB.getConexion();
-             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setInt(1, id);
-            preparedStatement.executeUpdate();
+             PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

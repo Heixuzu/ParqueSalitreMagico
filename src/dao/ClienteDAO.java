@@ -18,5 +18,7 @@ public interface ClienteDAO {
     List<Cliente> leerTodos();
     void actualizar(Cliente cliente);
     void eliminar(int id);
+
+    public Cliente leerPorCedula(int cedula);
 }
 

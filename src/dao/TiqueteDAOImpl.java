@@ -19,20 +19,46 @@ import java.util.List;
 public class TiqueteDAOImpl implements TiqueteDAO {
     // Método para insertar un nuevo tiquete
     @Override
-    public void insertar(Tiquete tiquete) {
+    public Tiquete insertar(Tiquete tiquete) {
         String sql = "INSERT INTO Tiquete (tipo, fechaAdquisicion, estadoAdquisicion, cliente_id) VALUES (?, ?, ?, ?)";
 
+        // Inicializar el objeto Tiquete con el id asignado después de la inserción
+        Tiquete tiqueteConId = null;
+
         try (Connection con = ConexionDB.getConexion(); 
-             PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, tiquete.getTipo());
-            ps.setDate(2, Date.valueOf(tiquete.getFechaAdquisicion()));
-            ps.setString(3, tiquete.getEstadoAdquisicion());
-            ps.setInt(4, tiquete.getClienteAsociado().getId());
-            ps.executeUpdate();
+             PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {  // Statement.RETURN_GENERATED_KEYS nos permite obtener la clave generada
+
+            // Establecer los parámetros del PreparedStatement
+            stmt.setString(1, tiquete.getTipo());
+            stmt.setDate(2, Date.valueOf(tiquete.getFechaAdquisicion()));
+            stmt.setString(3, tiquete.getEstadoAdquisicion());
+            stmt.setInt(4, tiquete.getClienteAsociado().getId());
+
+            // Ejecutar la inserción
+            stmt.executeUpdate();
+
+            // Obtener el ID generado
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    int idGenerado = rs.getInt(1);  // Obtener el primer valor, que es el ID generado
+                    // Asignar el id al objeto Tiquete
+                    tiqueteConId = new Tiquete(
+                        idGenerado,  // Asignamos el id generado
+                        tiquete.getTipo(),
+                        tiquete.getFechaAdquisicion(),
+                        tiquete.getEstadoAdquisicion(),
+                        tiquete.getClienteAsociado()
+                    );
+                }
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return tiqueteConId;  // Devolver el objeto Tiquete con el ID asignado
     }
+
 
     // Método para leer un tiquete por su ID
     @Override
@@ -42,9 +68,9 @@ public class TiqueteDAOImpl implements TiqueteDAO {
                      "JOIN Cliente c ON t.cliente_id = c.id " +
                      "WHERE t.id = ?";
         try (Connection con = ConexionDB.getConexion(); 
-             PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
                 // Crear un objeto Cliente con los datos obtenidos
@@ -83,8 +109,8 @@ public class TiqueteDAOImpl implements TiqueteDAO {
                      "JOIN Cliente c ON t.cliente_id = c.id";
 
         try (Connection con = ConexionDB.getConexion(); 
-             PreparedStatement ps = con.prepareStatement(sql)) {
-            ResultSet rs = ps.executeQuery();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 // Crear un objeto Cliente con los datos obtenidos
@@ -121,13 +147,13 @@ public class TiqueteDAOImpl implements TiqueteDAO {
         String sql = "UPDATE Tiquete SET tipo = ?, fechaAdquisicion = ?, estadoAdquisicion = ?, cliente_id = ? WHERE id = ?";
 
         try (Connection con = ConexionDB.getConexion(); 
-             PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, tiquete.getTipo());
-            ps.setDate(2, Date.valueOf(tiquete.getFechaAdquisicion()));
-            ps.setString(3, tiquete.getEstadoAdquisicion());
-            ps.setInt(4, tiquete.getClienteAsociado().getId());
-            ps.setInt(5, tiquete.getId());
-            ps.executeUpdate();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1, tiquete.getTipo());
+            stmt.setDate(2, Date.valueOf(tiquete.getFechaAdquisicion()));
+            stmt.setString(3, tiquete.getEstadoAdquisicion());
+            stmt.setInt(4, tiquete.getClienteAsociado().getId());
+            stmt.setInt(5, tiquete.getId());
+            stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -139,9 +165,9 @@ public class TiqueteDAOImpl implements TiqueteDAO {
         String sql = "DELETE FROM Tiquete WHERE id = ?";
 
         try (Connection con = ConexionDB.getConexion(); 
-             PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, id);
-            ps.executeUpdate();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

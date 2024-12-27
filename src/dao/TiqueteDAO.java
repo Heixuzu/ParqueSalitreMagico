@@ -13,7 +13,7 @@ import modelo.Tiquete;
 import java.util.List;
 
 public interface TiqueteDAO {
-    void insertar(Tiquete tiquete);
+    Tiquete insertar(Tiquete tiquete);
     Tiquete leerPorId(int id);
     List<Tiquete> leerTodos();
     void actualizar(Tiquete tiquete);
