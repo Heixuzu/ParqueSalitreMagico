@@ -94,7 +94,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
         dispose();
-        VistaCliente vistaCliente = new VistaCliente();
+        VistaIngresoCliente vistaCliente = new VistaIngresoCliente();
         vistaCliente.setLocationRelativeTo(null);
         vistaCliente.setVisible(true);      
     }//GEN-LAST:event_btnClienteActionPerformed
