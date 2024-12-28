@@ -69,6 +69,20 @@ public class EmpleadoControlador {
     public List<Empleado> obtenerTodosLosEmpleados() {
         return empleadoDAO.leerTodos();
     }
+    
+    // Método para obtener un empleado por su cédula
+    public Empleado obtenerEmpleadoPorCedula(int cedula) {
+        if (cedula <= 0) {
+            throw new IllegalArgumentException("La cédula debe ser mayor que 0");
+        }
+
+        Empleado empleado = empleadoDAO.leerPorCedula(cedula);
+        if (empleado == null) {
+            System.out.println("No se encontró ningún empleado con la cédula: " + cedula);
+        }
+        return empleado;
+    }
+
 
     // Método para actualizar un empleado
     public void actualizarEmpleado(int id, Empleado nuevoEmpleado) {

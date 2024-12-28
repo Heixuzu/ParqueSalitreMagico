@@ -14,6 +14,7 @@ import java.util.List;
 public interface EmpleadoDAO {
     void insertar(Empleado empleado);
     Empleado leerPorId(int id);
+    Empleado leerPorCedula(int cedula);
     List<Empleado> leerTodos();
     void actualizar(Empleado empleado);
     void eliminar(int id);

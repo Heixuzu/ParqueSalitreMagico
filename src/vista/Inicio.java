@@ -100,7 +100,10 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClienteActionPerformed
 
     private void btnEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadoActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        VistaEmpleado vistaEmpleado = new VistaEmpleado();
+        vistaEmpleado.setLocationRelativeTo(null);
+        vistaEmpleado.setVisible(true);
     }//GEN-LAST:event_btnEmpleadoActionPerformed
 
     /**

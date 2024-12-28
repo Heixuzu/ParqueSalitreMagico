@@ -11,16 +11,24 @@ package controlador;
 
 import dao.AtraccionDAO;
 import dao.AtraccionDAOImpl;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import modelo.Atraccion;
 import java.util.List;
 
 public class AtraccionControlador {
     private final AtraccionDAO atraccionDAO;
+    private List<String> alertas = new ArrayList<>();
+    private static final String ALERTAS_FILE = "src/dao/alertas.txt";
 
     public AtraccionControlador() {
         // Instancia del DAO
         this.atraccionDAO = new AtraccionDAOImpl();
+        cargarAlertas();
     }
 
     // Método para insertar una nueva atracción
@@ -183,6 +191,48 @@ public class AtraccionControlador {
         }
 
         return cumpleAlturaMinima;
+    }
+    
+    public void agregarAlerta(String idCliente, String nombreCliente, String nombreAtraccion) {
+        // Formar el mensaje de alerta
+        String alerta = String.format(
+            "El cliente %s con ID %s intentó ingresar a la atracción %s sin cumplir la altura mínima.",
+            nombreCliente, idCliente, nombreAtraccion
+        );
+
+        // Agregar la alerta a la lista
+        alertas.add(alerta);
+        
+        // Guardar la alerta en el archivo
+        guardarAlertas();
+    }
+    
+    // Método para guardar las alertas en un archivo
+    private void guardarAlertas() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(ALERTAS_FILE))) {
+            for (String alerta : alertas) {
+                writer.write(alerta);
+                writer.newLine(); // Escribir cada alerta en una nueva línea
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Método para cargar las alertas desde el archivo
+    private void cargarAlertas() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(ALERTAS_FILE))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                alertas.add(line); // Agregar cada línea como una alerta
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<String> obtenerAlertas() {
+        return new ArrayList<>(alertas); // Retorna una copia para evitar modificaciones externas
     }
 
 }

@@ -55,15 +55,14 @@ public class Pruebas {
         System.out.println(visita3);
         
         // Crear objetos de Empleado
-        Empleado empleado1 = new Empleado(1, 55555555, "Laura Martínez", 998877665, "laura.martinez@example.com", "Mañana", "Administrativo");
-        Empleado empleado2 = new Empleado(2, 66666666, "Pedro López", 887766554, "pedro.lopez@example.com", "Tarde", "Mantenimiento");
-        Empleado empleado3 = new Empleado(3, 77777777, "María Hernández", 776655443, "maria.hernandez@example.com", "Noche", "Logística");
+        Empleado administrativo = new Empleado(101, "Carlos Martínez", 12345678, "carlos.martinez@example.com", "Mañana", "Administrativo");
+        Empleado logistica = new Empleado(102, "Laura Gómez", 87654321, "laura.gomez@example.com", "Tarde", "Logística");
+        Empleado publicidad = new Empleado(103, "Sofía Pérez", 45678912, "sofia.perez@example.com", "Noche", "Publicidad");
+        Empleado operador = new Empleado(104, "Luis Hernández", 32165487, "luis.hernandez@example.com", "Mañana", "Operador");
+        Empleado mantenimiento = new Empleado(105, "Ana López", 78912345, "ana.lopez@example.com", "Tarde", "Mantenimiento");
+        
 
-        // Mostrar información de los empleados
-        System.out.println("\nEmpleados:");
-        System.out.println(empleado1);
-        System.out.println(empleado2);
-        System.out.println(empleado3);
+
         
         // Crear estaciones
         Estacion estacion1 = new Estacion(1, "Punto Central", "Habilitada");
@@ -98,9 +97,11 @@ public class Pruebas {
         
         EstacionControlador estacionControlador = new EstacionControlador();
         
-        atraccionControlador.insertarAtraccion(atraccion1);
-        atraccionControlador.insertarAtraccion(atraccion2);
-        atraccionControlador.insertarAtraccion(atraccion3);
+        empleadoControlador.insertarEmpleado(administrativo);
+        empleadoControlador.insertarEmpleado(logistica);
+        empleadoControlador.insertarEmpleado(publicidad);
+        empleadoControlador.insertarEmpleado(operador);
+        empleadoControlador.insertarEmpleado(mantenimiento);
         
         System.out.println(tiqueteControlador.obtenerTodosLosTiquetes());     
         

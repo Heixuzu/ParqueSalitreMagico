@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import modelo.Atraccion;
+import modelo.Cliente;
 import modelo.Tiquete;
 
 /**
@@ -23,6 +24,7 @@ public class VistaAtracciones extends javax.swing.JFrame {
      */
     public VistaAtracciones() {
         initComponents();
+        setTitle("Ingreso a Atracciones");
         cargarAtraccionesHabilitadas();
     }
 
@@ -50,6 +52,7 @@ public class VistaAtracciones extends javax.swing.JFrame {
         txtCondiciones = new javax.swing.JTextPane();
         jLabel6 = new javax.swing.JLabel();
         txtClasificacion = new javax.swing.JTextField();
+        btnAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,7 +85,14 @@ public class VistaAtracciones extends javax.swing.JFrame {
 
         jScrollPane4.setViewportView(txtCondiciones);
 
-        jLabel6.setText("Tipo");
+        jLabel6.setText("Clasificación");
+
+        btnAtras.setText("Atrás");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,29 +100,34 @@ public class VistaAtracciones extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnIngresar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAtraccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnIngresar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAtraccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtAlturaMinima)
+                                    .addComponent(txtClasificacion))))
+                        .addContainerGap(89, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTiquete, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtAlturaMinima)
-                            .addComponent(txtClasificacion))))
-                .addContainerGap(89, Short.MAX_VALUE))
+                        .addComponent(txtTiquete, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAtras)
+                        .addGap(25, 25, 25))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,8 +135,9 @@ public class VistaAtracciones extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtTiquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                    .addComponent(txtTiquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtras))
+                .addGap(26, 26, 26)
                 .addComponent(jLabel2)
                 .addGap(20, 20, 20)
                 .addComponent(txtAtraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,10 +173,11 @@ public class VistaAtracciones extends javax.swing.JFrame {
         TiqueteControlador tiqueteControlador = new TiqueteControlador();
           
         // Obtener la atracción seleccionada
-         Atraccion atraccion = atraccionControlador.obtenerAtraccionPorNombre(atraccionSeleccionada);
+        Atraccion atraccion = atraccionControlador.obtenerAtraccionPorNombre(atraccionSeleccionada);
     
         // Obtener la estatura del cliente asociada al tiquete
-        double estatura = tiqueteControlador.obtenerEstaturaClientePorTiquete(tiqueteId);
+        Cliente cliente = tiqueteControlador.obtenerClientePorTiquete(tiqueteId);
+        double estatura = cliente.getEstatura();
         
         // Verificar si el cliente cumple con la altura mínima
         boolean cumpleAlturaMinima = atraccionControlador.comprobarAlturaMinima(estatura, atraccion.getId());
@@ -172,6 +189,8 @@ public class VistaAtracciones extends javax.swing.JFrame {
             // El cliente no cumple con la altura mínima
             JOptionPane.showMessageDialog(null, "No cumples con la altura mínima requerida para esta atracción.",
                                           "Advertencia", JOptionPane.WARNING_MESSAGE);
+            atraccionControlador.agregarAlerta(String.valueOf(cliente.getId()), cliente.getNombre(), atraccion.getNombre());
+            
         }
         
     }//GEN-LAST:event_btnIngresarActionPerformed
@@ -190,6 +209,13 @@ public class VistaAtracciones extends javax.swing.JFrame {
             txtAlturaMinima.setText(String.valueOf(atraccion.getAlturaMinima()));
         }
     }//GEN-LAST:event_txtAtraccionActionPerformed
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        dispose();
+        VistaCliente vistaCliente = new VistaCliente();
+        vistaCliente.setLocationRelativeTo(null);
+        vistaCliente.setVisible(true);
+    }//GEN-LAST:event_btnAtrasActionPerformed
     
         public void cargarAtraccionesHabilitadas() {
         AtraccionControlador atraccionControlador = new AtraccionControlador();
@@ -216,6 +242,7 @@ public class VistaAtracciones extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnIngresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

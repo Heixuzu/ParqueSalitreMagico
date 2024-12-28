@@ -63,6 +63,36 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
         
         return empleado;
     }
+    
+    @Override
+    public Empleado leerPorCedula(int cedula) {
+    String sql = "SELECT * FROM Empleado WHERE cedula = ?";
+    Empleado empleado = null;
+
+    try (Connection conn = ConexionDB.getConexion();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setInt(1, cedula);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            empleado = new Empleado(
+                rs.getInt("id"),
+                rs.getInt("cedula"),
+                rs.getString("nombre"),
+                rs.getInt("telefono"),
+                rs.getString("email"),
+                rs.getString("horario"),
+                rs.getString("tipo")
+            );
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return empleado;
+}
+
 
     @Override
     public List<Empleado> leerTodos() {
