@@ -53,6 +53,7 @@ public class VistaIngresoAtracciones extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtClasificacion = new javax.swing.JTextField();
         btnAtras = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +95,13 @@ public class VistaIngresoAtracciones extends javax.swing.JFrame {
             }
         });
 
+        btnSalir.setText("Salir del parque");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,12 +129,17 @@ public class VistaIngresoAtracciones extends javax.swing.JFrame {
                                     .addComponent(txtAlturaMinima)
                                     .addComponent(txtClasificacion))))
                         .addContainerGap(89, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTiquete, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAtras)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnSalir))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtTiquete, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAtras)))
                         .addGap(25, 25, 25))))
         );
         layout.setVerticalGroup(
@@ -158,7 +171,9 @@ public class VistaIngresoAtracciones extends javax.swing.JFrame {
                         .addComponent(txtAlturaMinima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -185,6 +200,7 @@ public class VistaIngresoAtracciones extends javax.swing.JFrame {
         if (cumpleAlturaMinima) {
             // El cliente cumple con la altura mínima
             JOptionPane.showMessageDialog(this, "¡Disfruta de " + atraccionSeleccionada + "!");
+            atraccionControlador.agregarAtraccionVisitada(String.valueOf(cliente.getId()), cliente.getNombre(), atraccion.getNombre());
         } else {
             // El cliente no cumple con la altura mínima
             JOptionPane.showMessageDialog(null, "No cumples con la altura mínima requerida para esta atracción.",
@@ -216,6 +232,23 @@ public class VistaIngresoAtracciones extends javax.swing.JFrame {
         vistaCliente.setLocationRelativeTo(null);
         vistaCliente.setVisible(true);
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        int tiqueteId = Integer.parseInt(txtTiquete.getText());
+        
+        TiqueteControlador tiqueteControlador = new TiqueteControlador();
+        Tiquete tiquete = tiqueteControlador.obtenerTiquetePorId(tiqueteId);
+        
+        Tiquete tiqueteActualizado = new Tiquete(tiquete.getTipo(),tiquete.getFechaAdquisicion(),"Usado",tiquete.getClienteAsociado());
+        
+        tiqueteControlador.actualizarTiquete(tiqueteId, tiqueteActualizado);
+        
+        Cliente cliente = tiqueteControlador.obtenerClientePorTiquete(tiqueteId);
+        
+        JOptionPane.showMessageDialog(this, "¡Adiós " + cliente.getNombre() + ", esperamos que vuelvas!");
+        
+        dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
     
         public void cargarAtraccionesHabilitadas() {
         AtraccionControlador atraccionControlador = new AtraccionControlador();
@@ -244,6 +277,7 @@ public class VistaIngresoAtracciones extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnIngresar;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

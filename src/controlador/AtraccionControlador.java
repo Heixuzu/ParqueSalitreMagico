@@ -23,12 +23,15 @@ import java.util.List;
 public class AtraccionControlador {
     private final AtraccionDAO atraccionDAO;
     private List<String> alertas = new ArrayList<>();
+    private List<String> atraccionesVisitadas = new ArrayList<>();
     private static final String ALERTAS_FILE = "src/dao/alertas.txt";
+    private static final String ATRACCIONES_FILE = "src/dao/atraccionesVisitadas.txt";
 
     public AtraccionControlador() {
         // Instancia del DAO
         this.atraccionDAO = new AtraccionDAOImpl();
         cargarAlertas();
+        cargarAtraccionesVisitadas();
     }
 
     // Método para insertar una nueva atracción
@@ -233,6 +236,47 @@ public class AtraccionControlador {
 
     public List<String> obtenerAlertas() {
         return new ArrayList<>(alertas); // Retorna una copia para evitar modificaciones externas
+    }
+    
+    public void agregarAtraccionVisitada(String idCliente, String nombreCliente, String nombreAtraccion) {
+        // Formar el mensaje de alerta
+        String atraccionVisitada = String.format(
+            "El cliente %s con ID %s visitó la atracción %s ",
+            nombreCliente, idCliente, nombreAtraccion
+        );
+
+        // Agregar la alerta a la lista
+        atraccionesVisitadas.add(atraccionVisitada);
+        
+        // Guardar la alerta en el archivo
+        guardarAtraccionesVisitadas();
+    }
+    
+    private void guardarAtraccionesVisitadas() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(ATRACCIONES_FILE))) {
+            for (String atraccionVisitada : atraccionesVisitadas) {
+                writer.write(atraccionVisitada);
+                writer.newLine(); // Escribir cada alerta en una nueva línea
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+        // Método para cargar las alertas desde el archivo
+    private void cargarAtraccionesVisitadas() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(ATRACCIONES_FILE))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                atraccionesVisitadas.add(line); // Agregar cada línea como una alerta
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public List<String> obtenerAtraccionesVisitadas() {
+        return new ArrayList<>(atraccionesVisitadas); // Retorna una copia para evitar modificaciones externas
     }
 
 }

@@ -6,12 +6,19 @@ import controlador.EstacionControlador;
 import controlador.TiqueteControlador;
 import controlador.VisitasControlador;
 import java.time.LocalDate;
+import java.util.List;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
 import modelo.Atraccion;
 import modelo.Cliente;
 import modelo.Empleado;
 import modelo.Estacion;
 import modelo.Tiquete;
 import modelo.Visitas;
+import static junit.framework.Assert.assertTrue;
+import org.junit.Test;
+import org.junit.*;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -22,94 +29,96 @@ import modelo.Visitas;
  *
  * @author Heidy
  */
-public class Pruebas {
-    public static void main(String[] args) {
-        Cliente cliente1 = new Cliente(1, 12345678, "Juan Pérez", 987654321, "juan.perez@example.com", 1.75, 25, null);
-        Cliente cliente2 = new Cliente(2, 87654321, "Ana Gómez", 123456789, "ana.gomez@example.com", 1.60, 16, 345678901);
-        Cliente cliente3 = new Cliente(3, 11223344, "Carlos Torres", 112233445, "carlos.torres@example.com", 1.80, 30, null);
+public class Pruebas { 
+    
+    @Test
+    public void testModeloAtraccion() {
+        // Crear un objeto Atraccion con todos los parámetros del constructor
+        Atraccion atraccion = new Atraccion(1, 
+                                            "Montaña Rusa", 
+                                            "Una montaña rusa increíble", 
+                                            "Adrenalina", 
+                                            "No apto para personas con problemas de corazón.", 
+                                            "Habilitada", 
+                                            1.5);
 
-        // Mostrar información de los clientes
-        System.out.println("Clientes:");
-        System.out.println(cliente1);
-        System.out.println(cliente2);
-        System.out.println(cliente3);
-        
-        // Crear objetos Tiquete
-        Tiquete tiquete1 = new Tiquete(101, "Premium", LocalDate.now(), "Activo", cliente1);
-        Tiquete tiquete2 = new Tiquete(102, "Exclusivo", LocalDate.now().minusDays(5), "Usado", cliente2);
-        Tiquete tiquete3 = new Tiquete(103, "Estandar", LocalDate.now().minusMonths(1), "Cancelado", cliente3);
-
-        // Mostrar los objetos
-        System.out.println(tiquete1);
-        System.out.println(tiquete2);
-        System.out.println(tiquete3);
-        
-        // Crear objetos Visita
-        Visitas visita1 = new Visitas(201, cliente1, tiquete1);
-        Visitas visita2 = new Visitas(202, cliente2, tiquete2);
-        Visitas visita3 = new Visitas(203, cliente3, tiquete3);
-
-        // Mostrar los objetos
-        System.out.println(visita1);
-        System.out.println(visita2);
-        System.out.println(visita3);
-        
-        // Crear objetos de Empleado
-        Empleado administrativo = new Empleado(101, "Carlos Martínez", 12345678, "carlos.martinez@example.com", "Mañana", "Administrativo");
-        Empleado logistica = new Empleado(102, "Laura Gómez", 87654321, "laura.gomez@example.com", "Tarde", "Logística");
-        Empleado publicidad = new Empleado(103, "Sofía Pérez", 45678912, "sofia.perez@example.com", "Noche", "Publicidad");
-        Empleado operador = new Empleado(104, "Luis Hernández", 32165487, "luis.hernandez@example.com", "Mañana", "Operador");
-        Empleado mantenimiento = new Empleado(105, "Ana López", 78912345, "ana.lopez@example.com", "Tarde", "Mantenimiento");
-        
-
-
-        
-        // Crear estaciones
-        Estacion estacion1 = new Estacion(1, "Punto Central", "Habilitada");
-        Estacion estacion2 = new Estacion(2, "Estación Oasis", "Inhabilitada");
-        Estacion estacion3 = new Estacion(3, "Estacion Alegría", "Habilitada");
-
-        // Mostrar las estaciones
-        System.out.println(estacion1);
-        System.out.println(estacion2);
-        System.out.println(estacion3);
-        
-        // Crear objetos Atraccion
-        Atraccion atraccion1 = new Atraccion(1, "Montaña Rusa", "Una montaña rusa de alta velocidad.", "Adrenalina", "No apto para personas con problemas de corazón", "Habilitada", 1.6);
-        Atraccion atraccion2 = new Atraccion(2, "Carrusel", "Un carrusel tradicional para toda la familia.", "Familiar", "Apto para todas las edades", "Habilitada", 1.2);
-        Atraccion atraccion3 = new Atraccion(3, "Bungee Jumping", "Salto en bungee desde una plataforma alta.", "Adrenalina", "No apto para personas con problemas de corazón", "Habilitada", 1.5);
-
-        // Mostrar información de las atracciones
-        System.out.println(atraccion1);
-        System.out.println(atraccion2);
-        System.out.println(atraccion3);
-        
-        // Crear el controlador
-        TiqueteControlador tiqueteControlador = new TiqueteControlador();
-        
-        VisitasControlador visitasControlador = new VisitasControlador();
-        
-        AtraccionControlador atraccionControlador = new AtraccionControlador();
-        
-        ClienteControlador clienteControlador = new ClienteControlador();
-        
-        EmpleadoControlador empleadoControlador = new EmpleadoControlador();
-        
-        EstacionControlador estacionControlador = new EstacionControlador();
-        
-        empleadoControlador.insertarEmpleado(administrativo);
-        empleadoControlador.insertarEmpleado(logistica);
-        empleadoControlador.insertarEmpleado(publicidad);
-        empleadoControlador.insertarEmpleado(operador);
-        empleadoControlador.insertarEmpleado(mantenimiento);
-        
-        System.out.println(tiqueteControlador.obtenerTodosLosTiquetes());     
-        
-        System.out.println(visitasControlador.obtenerTodasLasVisitas());
-        
-        System.out.println(clienteControlador.obtenerTodosLosClientes());
-        
-        System.out.println(empleadoControlador.obtenerTodosLosEmpleados());
-
+        // Comprobar que los atributos se asignan correctamente
+        assertEquals(1, atraccion.getId());
+        assertEquals("Montaña Rusa", atraccion.getNombre());
+        assertEquals("Una montaña rusa increíble", atraccion.getDescripcion());
+        assertEquals("Adrenalina", atraccion.getClasificacion());
+        assertEquals("No apto para personas con problemas de corazón.", atraccion.getCondicionesUso());
+        assertEquals("Habilitada", atraccion.getEstado());
+        assertEquals(1.5, atraccion.getAlturaMinima(), 0.01);
     }
+    
+    @Test
+    public void testModeloEmpleado() {
+        // Crear un objeto Empleado con todos los parámetros del constructor
+        Empleado empleado = new Empleado(1, // ID
+                                          12345678, // Cédula
+                                          "Juan Pérez", // Nombre
+                                          987654321, // Teléfono
+                                          "juan.perez@example.com", // Email
+                                          "Mañana", // Horario
+                                          "Administrativo"); // Tipo
+
+        // Comprobar que los atributos se asignan correctamente
+        assertEquals(1, empleado.getId());
+        assertEquals(12345678, empleado.getCedula());
+        assertEquals("Juan Pérez", empleado.getNombre());
+        assertEquals(987654321, empleado.getTelefono());
+        assertEquals("juan.perez@example.com", empleado.getEmail());
+        assertEquals("mañana", empleado.getHorario()); // Normalizado a minúsculas
+        assertEquals("Administrativo", empleado.getTipo());
+    }
+    
+    @Test
+    public void testModeloEstacion() {
+        // Crear un objeto Estacion con todos los parámetros del constructor
+        Estacion estacion = new Estacion(1, "Centro", "Habilitada");
+
+        // Comprobar que los atributos se asignan correctamente
+        assertEquals(1, estacion.getId());
+        assertEquals("Centro", estacion.getUbicacion());
+        assertEquals("Habilitada", estacion.getEstado());
+    }
+    
+    @Test
+    public void testModeloTiquete() {
+        // Crear un cliente asociado
+        Cliente cliente = new Cliente(
+            12345678,    // Cédula
+            "Ana Pérez", // Nombre
+            123456789,   // Teléfono
+            "ana.perez@example.com", // Email
+            1.65,        // Estatura
+            16,          // Edad
+            987654321    // Contacto (requerido porque es menor de edad)
+        );
+
+        // Crear un objeto Tiquete
+        Tiquete tiquete = new Tiquete("Premium", LocalDate.now(), "Activo", cliente);
+
+        // Verificar los valores iniciales
+        assertEquals("Premium", tiquete.getTipo());
+        assertEquals("Activo", tiquete.getEstadoAdquisicion());
+        assertEquals(cliente, tiquete.getClienteAsociado());
+    }
+    
+    @Test
+    public void testModeloVisitas() {
+        // Crear objetos asociados
+        Cliente cliente = new Cliente(12345678, "Ana Pérez", 123456789, "ana.perez@example.com", 1.65, 30, null);
+        Tiquete tiquete = new Tiquete("Premium", LocalDate.now(), "Activo", cliente);
+
+        // Crear objeto Visitas usando el constructor
+        Visitas visita = new Visitas(cliente, tiquete);
+
+        // Validar atributos con getters
+        assertEquals("El cliente asociado no coincide", cliente, visita.getClienteAsociado());
+        assertEquals("El tiquete asociado no coincide", tiquete, visita.getTiqueteAsociado());
+    }
+
 }
+

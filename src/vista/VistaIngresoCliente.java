@@ -57,7 +57,7 @@ public class VistaIngresoCliente extends javax.swing.JFrame {
         txtEdad = new javax.swing.JTextField();
         txtContacto = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        btnRegistrar = new javax.swing.JButton();
+        btnValidar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txtEstacion = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
@@ -66,6 +66,7 @@ public class VistaIngresoCliente extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtMensaje = new javax.swing.JTextPane();
         btnAtras = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,10 +97,10 @@ public class VistaIngresoCliente extends javax.swing.JFrame {
 
         jLabel9.setText("*Obligatorio si es menor de 18 años");
 
-        btnRegistrar.setText("Registrar Datos");
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        btnValidar.setText("Validar Datos");
+        btnValidar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
+                btnValidarActionPerformed(evt);
             }
         });
 
@@ -139,6 +140,8 @@ public class VistaIngresoCliente extends javax.swing.JFrame {
             }
         });
 
+        jLabel12.setText("Si ya has estado antes en el parque sólo ingresa tu cédula");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,54 +150,59 @@ public class VistaIngresoCliente extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTelefono))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEmail))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEstatura))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEdad))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCedula))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombre))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
+                                .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtContacto))
-                            .addComponent(jLabel9)
-                            .addComponent(btnRegistrar))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtEmail))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel1)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel9)
+                                    .addComponent(btnValidar)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(jLabel6)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtEstatura))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(jLabel7)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnAtras)
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11)
                             .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTipoTiquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 66, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAtras)
-                        .addGap(22, 22, 22))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addGap(69, 69, 69))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,15 +210,10 @@ public class VistaIngresoCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel10)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(btnAtras)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(7, 7, 7)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -225,16 +228,8 @@ public class VistaIngresoCliente extends javax.swing.JFrame {
                         .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel11)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtTipoTiquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(txtEstatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -247,13 +242,25 @@ public class VistaIngresoCliente extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(btnAtras)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel11)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtTipoTiquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
@@ -263,68 +270,73 @@ public class VistaIngresoCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContactoActionPerformed
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+    private void btnValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarActionPerformed
         try {
-            // Convertir los valores ingresados a los tipos correspondientes
-            int cedula = Integer.parseInt(txtCedula.getText());  // Convierte a int
-            String nombre = txtNombre.getText();  // Texto, no necesita conversión
-            int telefono = Integer.parseInt(txtTelefono.getText());  // Convierte a int
-            String email = txtEmail.getText();  // Texto, no necesita conversión
-            double estatura = Double.parseDouble(txtEstatura.getText());  // Convierte a double
-            int edad = Integer.parseInt(txtEdad.getText());  // Convierte a int
-            Integer contacto = null;
-
-            // Si el campo de contacto no está vacío, convertirlo a Integer
-            if (!txtContacto.getText().isEmpty()) {
-                contacto = Integer.parseInt(txtContacto.getText());  // Convierte a Integer
-            }
-            
-            if (edad < 18 && txtContacto.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Si eres menor de edad, debes ingresar el número de cédula de tu acompañante");
+            // Validar que al menos la cédula está completa
+            if (txtCedula.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor ingrese la cédula para continuar.",
+                                              "Advertencia", JOptionPane.WARNING_MESSAGE);
+                return;
             }
 
-            // Crear el objeto Cliente con los datos obtenidos
-            Cliente cliente = new Cliente(cedula, nombre, telefono, email, estatura, edad, contacto);
+            // Convertir cédula a int
+            int cedula = Integer.parseInt(txtCedula.getText());
 
-            // Crear el controlador y llamar al método insertarCliente
+            // Crear el controlador para buscar al cliente
             ClienteControlador clienteControlador = new ClienteControlador();
-            clienteControlador.insertarCliente(cliente);
-            
-             // Obtener el tipo de tiquete seleccionado
-            String tipoTiquete = (String) txtTipoTiquete.getSelectedItem(); // Obtiene el tipo seleccionado del ComboBox
-            
-            // Obtener otros datos como la fecha, estado y cliente (suponiendo que ya los tienes)
-            LocalDate fechaAdquisicion = LocalDate.now(); // Ejemplo de fecha actual
-            String estadoAdquisicion = "Activo"; // Ejemplo de estado
-            Cliente clienteAsociado = clienteControlador.obtenerClientePorCedula(cedula); // Suponiendo que tienes un método para obtener el cliente
-            
-            // Crear el objeto Tiquete con los datos obtenidos
+            Cliente clienteAsociado = clienteControlador.obtenerClientePorCedula(cedula);
+
+            // Si el cliente no existe, intentar crearlo con los datos ingresados
+            if (clienteAsociado == null) {
+                // Validar campos obligatorios para un nuevo cliente
+                if (txtNombre.getText().isEmpty() || txtTelefono.getText().isEmpty() || 
+                    txtEmail.getText().isEmpty() || txtEstatura.getText().isEmpty() || 
+                    txtEdad.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Para registrar un nuevo cliente, todos los campos son obligatorios.",
+                                                  "Advertencia", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                // Convertir otros campos
+                String nombre = txtNombre.getText();
+                int telefono = Integer.parseInt(txtTelefono.getText());
+                String email = txtEmail.getText();
+                double estatura = Double.parseDouble(txtEstatura.getText());
+                int edad = Integer.parseInt(txtEdad.getText());
+                Integer contacto = txtContacto.getText().isEmpty() ? null : Integer.parseInt(txtContacto.getText());
+                
+                if (edad < 18 && txtContacto.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Si eres menor de edad, debes ingresar el número de cédula de tu acompañante");
+                }
+
+                // Crear y registrar al nuevo cliente
+                clienteAsociado = new Cliente(cedula, nombre, telefono, email, estatura, edad, contacto);
+                clienteControlador.insertarCliente(clienteAsociado);
+            }
+
+            // Crear el tiquete asociado
+            String tipoTiquete = (String) txtTipoTiquete.getSelectedItem();
+            LocalDate fechaAdquisicion = LocalDate.now();
+            String estadoAdquisicion = "Activo";
             Tiquete tiquete = new Tiquete(tipoTiquete, fechaAdquisicion, estadoAdquisicion, clienteAsociado);
-            
-            // Crear el controlador y llamar al método insertarTiquete
             TiqueteControlador tiqueteControlador = new TiqueteControlador();
             Tiquete tiqueteAsociado = tiqueteControlador.insertarTiquete(tiquete);
-            
-            //Obtener el tiquete asociado
-            
-            // Crear el objeto Visita con los datos obtenidos
+
+            // Registrar la visita
             Visitas visita = new Visitas(clienteAsociado, tiqueteAsociado);
-                    
-            //Crear el controlador y llamar al método insertarVisita
             VisitasControlador visitasControlador = new VisitasControlador();
             visitasControlador.insertarVisita(visita);
 
-            // Mostrar un mensaje de éxito o realizar alguna acción adicional
+            // Mensaje de éxito
             JOptionPane.showMessageDialog(this, "Cliente registrado correctamente.");
-            
-            txtMensaje.setText("¡Gracias por visitar el Parque Salitre Mágico " + nombre + "! " + "Se te asignó el tiquete número " + tiqueteAsociado.getId() + " úsalo para ingresar a las atracciones");
+            txtMensaje.setText("¡Gracias por visitar el Parque Salitre Mágico " + clienteAsociado.getNombre() + "! " + 
+                               "Se te asignó el tiquete número " + tiqueteAsociado.getId() + " úsalo para ingresar a las atracciones.");
 
         } catch (NumberFormatException e) {
-            // Manejo de errores si el formato no es válido
-            JOptionPane.showMessageDialog(null, "Por favor ingrese datos válidos",
+            JOptionPane.showMessageDialog(this, "Por favor ingrese datos válidos",
                                           "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+    }//GEN-LAST:event_btnValidarActionPerformed
 
     private void txtTipoTiqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoTiqueteActionPerformed
         // TODO add your handling code here:
@@ -379,10 +391,11 @@ public class VistaIngresoCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnIngresar;
-    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnValidar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

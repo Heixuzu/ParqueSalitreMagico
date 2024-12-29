@@ -1,0 +1,6 @@
+El cliente Luis Hernández con ID 7 visitó la atracción Bungee Jumping 
+El cliente Luis Hernández con ID 7 visitó la atracción Carrusel 
+El cliente Luis Hernández con ID 7 visitó la atracción Bungee Jumping 
+El cliente Laura Fernández con ID 9 visitó la atracción Montaña Rusa 
+El cliente Laura Fernández con ID 9 visitó la atracción Carrusel 
+El cliente Laura Fernández con ID 9 visitó la atracción Bungee Jumping 
