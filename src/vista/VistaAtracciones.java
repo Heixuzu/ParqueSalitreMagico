@@ -295,18 +295,18 @@ public class VistaAtracciones extends javax.swing.JFrame {
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         // Convertir los valores ingresados a los tipos correspondientes
-        String nombre = txtNombre.getText();  // Texto, no necesita conversión
-        String descripcion = txtDescripcion.getText();// Convierte a int
-        String clasificacion = (String) txtClasificacion.getSelectedItem(); // Texto, no necesita conversión
+        String nombre = txtNombre.getText(); 
+        String descripcion = txtDescripcion.getText();
+        String clasificacion = (String) txtClasificacion.getSelectedItem(); 
         String condicionesUso = txtCondicionesUso.getText();
         String estado = (String) txtEstado.getSelectedItem();
         double alturaMinima = Double.parseDouble(txtAlturaMinima.getText());
         
 
-        // Crear el objeto Cliente con los datos obtenidos
+        // Crear el objeto Atraccion con los datos obtenidos
         Atraccion atraccion = new Atraccion(nombre,descripcion,clasificacion,condicionesUso,estado,alturaMinima);
 
-        // Crear el controlador y llamar al método insertarCliente
+        // Crear el controlador y llamar al método insertarAtraccion
         AtraccionControlador atraccionControlador = new AtraccionControlador();
         atraccionControlador.insertarAtraccion(atraccion);
 
@@ -347,9 +347,9 @@ public class VistaAtracciones extends javax.swing.JFrame {
         
         // Convertir los valores ingresados a los tipos correspondientes
         int atraccionId = Integer.parseInt(txtAtraccionId.getText());
-        String nombre = txtNombre.getText();  // Texto, no necesita conversión
-        String descripcion = txtDescripcion.getText();// Convierte a int
-        String clasificacion = (String) txtClasificacion.getSelectedItem(); // Texto, no necesita conversión
+        String nombre = txtNombre.getText();  
+        String descripcion = txtDescripcion.getText();
+        String clasificacion = (String) txtClasificacion.getSelectedItem(); 
         String condicionesUso = txtCondicionesUso.getText();
         String estado = (String) txtEstado.getSelectedItem();
         double alturaMinima = Double.parseDouble(txtAlturaMinima.getText());
@@ -369,13 +369,13 @@ public class VistaAtracciones extends javax.swing.JFrame {
         // Limpiar la tabla antes de cargar nuevos datos
         modelo.setRowCount(0);
 
-        // Crear un controlador o acceso al DAO de Clientes
+        // Crear un controlador o acceso al DAO de Atracciones
         AtraccionControlador atraccionControlador = new AtraccionControlador();
 
-        // Obtener todos los clientes desde el controlador
+        // Obtener todas las atracciones desde el controlador
         List<Atraccion> atracciones = atraccionControlador.obtenerTodasLasAtracciones();
 
-        // Iterar por la lista de clientes y agregar filas al modelo
+        // Iterar por la lista de atracciones y agregar filas al modelo
         for (Atraccion atraccion : atracciones) {
             modelo.addRow(new Object[]{
                 atraccion.getId(),
@@ -385,7 +385,6 @@ public class VistaAtracciones extends javax.swing.JFrame {
                 atraccion.getCondicionesUso(),
                 atraccion.getEstado(),
                 atraccion.getAlturaMinima()
-
             });
         }
     }
@@ -406,7 +405,7 @@ public class VistaAtracciones extends javax.swing.JFrame {
         List<String> atraccionesVisitadas = atraccionControlador.obtenerAtraccionesVisitadas();
         
         for (String atraccionVisitada : atraccionesVisitadas) {
-                model.addElement(atraccionVisitada);  // Agregar cada alerta al DefaultListModel
+                model.addElement(atraccionVisitada);  // Agregar cada atracción visitada al DefaultListModel
         }
     }
             

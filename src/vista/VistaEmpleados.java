@@ -269,10 +269,10 @@ public class VistaEmpleados extends javax.swing.JFrame {
         String tipo = (String) txtTipo.getSelectedItem();
         
 
-        // Crear el objeto Cliente con los datos obtenidos
+        // Crear el objeto Empleado con los datos obtenidos
         Empleado empleado = new Empleado(cedula, nombre, telefono, email, horario, tipo);
 
-        // Crear el controlador y llamar al método insertarCliente
+        // Crear el controlador y llamar al método insertarEmpleado
         EmpleadoControlador empleadoControlador = new EmpleadoControlador();
         empleadoControlador.insertarEmpleado(empleado);
 
@@ -294,11 +294,11 @@ public class VistaEmpleados extends javax.swing.JFrame {
         if (empleado != null) {
             // Agregar una única fila al modelo
             modelo.addRow(new Object[]{
-                empleado.getId(),                   // ID del cliente
-                empleado.getCedula(),               // Cédula del cliente
-                empleado.getNombre(),               // Nombre del cliente
-                empleado.getTelefono(),             // Teléfono del cliente
-                empleado.getEmail(),                // Email del cliente
+                empleado.getId(),                   
+                empleado.getCedula(),               
+                empleado.getNombre(),              
+                empleado.getTelefono(),             //
+                empleado.getEmail(),              
                 empleado.getHorario(),
                 empleado.getTipo()
             });
@@ -323,10 +323,10 @@ public class VistaEmpleados extends javax.swing.JFrame {
 
 
 
-        // Crear el objeto Cliente con los datos obtenidos
+        // Crear el objeto Empleado con los datos obtenidos
         Empleado empleado = new Empleado(cedula, nombre, telefono, email, horario, tipo);
 
-        // Crear el controlador y llamar al método insertarCliente
+        // Crear el controlador y llamar al método insertarEmpleado
         EmpleadoControlador empleadoControlador = new EmpleadoControlador();
         empleadoControlador.actualizarEmpleado(empleadoId, empleado);
 
@@ -356,22 +356,22 @@ public class VistaEmpleados extends javax.swing.JFrame {
         // Limpiar la tabla antes de cargar nuevos datos
         modelo.setRowCount(0);
 
-        // Crear un controlador o acceso al DAO de Clientes
+        // Crear un controlador o acceso al DAO de Empleados
         EmpleadoControlador empleadoControlador = new EmpleadoControlador();
 
-        // Obtener todos los clientes desde el controlador
+        // Obtener todos los empleados desde el controlador
         List<Empleado> empleados = empleadoControlador.obtenerTodosLosEmpleados();
 
-        // Iterar por la lista de clientes y agregar filas al modelo
+        // Iterar por la lista de empleados y agregar filas al modelo
         for (Empleado empleado : empleados) {
             modelo.addRow(new Object[]{
-                empleado.getId(),                   // ID del cliente
-                empleado.getCedula(),               // Cédula del cliente
-                empleado.getNombre(),               // Nombre del cliente
-                empleado.getTelefono(),             // Teléfono del cliente
-                empleado.getEmail(),                // Email del cliente
-                empleado.getHorario(),
-                empleado.getTipo()
+                empleado.getId(),                   // ID del empleado
+                empleado.getCedula(),               // Cédula del empleado
+                empleado.getNombre(),               // Nombre del empleado
+                empleado.getTelefono(),             // Teléfono del empleado
+                empleado.getEmail(),                // Email del empleado
+                empleado.getHorario(),              // Horario del empleado
+                empleado.getTipo()                  // Tipo de empleado
             });
         }
     }

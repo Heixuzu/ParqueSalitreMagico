@@ -61,7 +61,7 @@ public class Pruebas {
                                           987654321, // Teléfono
                                           "juan.perez@example.com", // Email
                                           "Mañana", // Horario
-                                          "Administrativo"); // Tipo
+                                          "Mantenimiento"); // Tipo
 
         // Comprobar que los atributos se asignan correctamente
         assertEquals(1, empleado.getId());
@@ -70,7 +70,7 @@ public class Pruebas {
         assertEquals(987654321, empleado.getTelefono());
         assertEquals("juan.perez@example.com", empleado.getEmail());
         assertEquals("mañana", empleado.getHorario()); // Normalizado a minúsculas
-        assertEquals("Administrativo", empleado.getTipo());
+        assertEquals("Mantenimiento", empleado.getTipo());
     }
     
     @Test

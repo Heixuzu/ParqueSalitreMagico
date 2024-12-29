@@ -244,8 +244,8 @@ public class VistaEstaciones extends javax.swing.JFrame {
         if (estacion != null) {
             // Agregar una única fila al modelo
             modelo.addRow(new Object[]{
-                estacion.getId(),                   // ID del cliente
-                estacion.getUbicacion(),               // Cédula del cliente
+                estacion.getId(),                   
+                estacion.getUbicacion(),              
                 estacion.getEstado(), 
             });
         } else {
@@ -282,21 +282,22 @@ public class VistaEstaciones extends javax.swing.JFrame {
         // Limpiar la tabla antes de cargar nuevos datos
         modelo.setRowCount(0);
 
-        // Crear un controlador o acceso al DAO de Clientes
+        // Crear un controlador o acceso al DAO de Estaciones
         EstacionControlador estacionControlador = new EstacionControlador();
 
-        // Obtener todos los clientes desde el controlador
+        // Obtener todas las estaciones desde el controlador
         List<Estacion> estaciones = estacionControlador.obtenerTodasLasEstaciones();
 
-        // Iterar por la lista de clientes y agregar filas al modelo
+        // Iterar por la lista de estaciones y agregar filas al modelo
         for (Estacion estacion : estaciones) {
             modelo.addRow(new Object[]{
-                estacion.getId(),                   // ID del cliente
-                estacion.getUbicacion(),               // Cédula del cliente
-                estacion.getEstado(),               // Nombre del cliente
+                estacion.getId(),                   // ID de la estación
+                estacion.getUbicacion(),            // Ubicación de la estación
+                estacion.getEstado(),               // Estado de la estación
             });
         }
     }
+    
     /**
      * @param args the command line arguments
      */

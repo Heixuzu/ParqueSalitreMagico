@@ -239,16 +239,16 @@ public class AtraccionControlador {
     }
     
     public void agregarAtraccionVisitada(String idCliente, String nombreCliente, String nombreAtraccion) {
-        // Formar el mensaje de alerta
+        // Formar el mensaje de atracción visitada
         String atraccionVisitada = String.format(
             "El cliente %s con ID %s visitó la atracción %s ",
             nombreCliente, idCliente, nombreAtraccion
         );
 
-        // Agregar la alerta a la lista
+        // Agregar la atracción visitada a la lista
         atraccionesVisitadas.add(atraccionVisitada);
         
-        // Guardar la alerta en el archivo
+        // Guardar la atracción visitada en el archivo
         guardarAtraccionesVisitadas();
     }
     
@@ -256,7 +256,7 @@ public class AtraccionControlador {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ATRACCIONES_FILE))) {
             for (String atraccionVisitada : atraccionesVisitadas) {
                 writer.write(atraccionVisitada);
-                writer.newLine(); // Escribir cada alerta en una nueva línea
+                writer.newLine(); // Escribir cada atracción visitada en una nueva línea
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -268,7 +268,7 @@ public class AtraccionControlador {
         try (BufferedReader reader = new BufferedReader(new FileReader(ATRACCIONES_FILE))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                atraccionesVisitadas.add(line); // Agregar cada línea como una alerta
+                atraccionesVisitadas.add(line); // Agregar cada línea como una atracción visitada
             }
         } catch (IOException e) {
             e.printStackTrace();
