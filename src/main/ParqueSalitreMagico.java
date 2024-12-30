@@ -44,6 +44,7 @@ public class ParqueSalitreMagico {
             inicio.setLocationRelativeTo(null);
             inicio.setVisible(true);
         });
+        
     }
     
 }

@@ -351,6 +351,7 @@ public class VistaClientes extends javax.swing.JFrame {
 
             // Crear el objeto Cliente con los datos obtenidos
             Cliente cliente = new Cliente(cedula, nombre, telefono, email, estatura, edad, contacto);
+    
 
             // Crear el controlador y llamar al método insertarCliente
             ClienteControlador clienteControlador = new ClienteControlador();
@@ -364,6 +365,8 @@ public class VistaClientes extends javax.swing.JFrame {
         
         ClienteControlador clienteControlador = new ClienteControlador();
         clienteControlador.eliminarCliente(clienteId);
+        
+        
         
         JOptionPane.showMessageDialog(this, "Cliente eliminado correctamente.");
     }//GEN-LAST:event_btnBorrarActionPerformed

@@ -3,3 +3,7 @@ El cliente Luis Hernández con ID 7 intentó ingresar a la atracción Montaña R
 El cliente Luis Hernández con ID 7 intentó ingresar a la atracción Montaña Rusa sin cumplir la altura mínima.
 El cliente Luis Hernández con ID 7 intentó ingresar a la atracción Montaña Rusa sin cumplir la altura mínima.
 El cliente Julian Molina con ID 10 intentó ingresar a la atracción Montaña Rusa sin cumplir la altura mínima.
+El cliente Maria Ramirez con ID 11 intentó ingresar a la atracción Montaña Rusa sin cumplir la altura mínima.
+El cliente Julian Molina con ID 10 intentó ingresar a la atracción Montaña Rusa sin cumplir la altura mínima.
+El cliente Maria Ramirez con ID 11 intentó ingresar a la atracción Montaña Rusa sin cumplir la altura mínima.
+El cliente Maria Ramirez con ID 11 intentó ingresar a la atracción Montaña Rusa sin cumplir la altura mínima.
