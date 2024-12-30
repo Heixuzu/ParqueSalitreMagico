@@ -310,27 +310,50 @@ public class VistaIngresoCliente extends javax.swing.JFrame {
                 }
 
                 // Crear y registrar al nuevo cliente
-                clienteAsociado = new Cliente(cedula, nombre, telefono, email, estatura, edad, contacto);
-                clienteControlador.insertarCliente(clienteAsociado);
-            }
+                Cliente clienteNuevo = new Cliente(cedula, nombre, telefono, email, estatura, edad, contacto);
+                clienteControlador.insertarCliente(clienteNuevo);
+                
+                // Crear el tiquete asociado
+                String tipoTiquete = (String) txtTipoTiquete.getSelectedItem();
+                LocalDate fechaAdquisicion = LocalDate.now();
+                String estadoAdquisicion = "Activo";
+                
+                
+                Tiquete tiquete = new Tiquete(tipoTiquete, fechaAdquisicion, estadoAdquisicion, clienteControlador.obtenerClientePorCedula(cedula));
+                TiqueteControlador tiqueteControlador = new TiqueteControlador();
+                Tiquete tiqueteAsociado = tiqueteControlador.insertarTiquete(tiquete);
 
-            // Crear el tiquete asociado
-            String tipoTiquete = (String) txtTipoTiquete.getSelectedItem();
-            LocalDate fechaAdquisicion = LocalDate.now();
-            String estadoAdquisicion = "Activo";
-            Tiquete tiquete = new Tiquete(tipoTiquete, fechaAdquisicion, estadoAdquisicion, clienteAsociado);
-            TiqueteControlador tiqueteControlador = new TiqueteControlador();
-            Tiquete tiqueteAsociado = tiqueteControlador.insertarTiquete(tiquete);
-
-            // Registrar la visita
-            Visitas visita = new Visitas(clienteAsociado, tiqueteAsociado);
-            VisitasControlador visitasControlador = new VisitasControlador();
-            visitasControlador.insertarVisita(visita);
-
-            // Mensaje de éxito
-            JOptionPane.showMessageDialog(this, "Cliente registrado correctamente.");
-            txtMensaje.setText("¡Gracias por visitar el Parque Salitre Mágico " + clienteAsociado.getNombre() + "! " + 
+                // Registrar la visita
+                Visitas visita = new Visitas(clienteControlador.obtenerClientePorCedula(cedula), tiqueteAsociado);
+                VisitasControlador visitasControlador = new VisitasControlador();
+                visitasControlador.insertarVisita(visita);
+                
+                // Mensaje de éxito
+                JOptionPane.showMessageDialog(this, "Cliente registrado correctamente.");
+                txtMensaje.setText("¡Gracias por visitar el Parque Salitre Mágico " + clienteNuevo.getNombre() + "! " + 
                                "Se te asignó el tiquete número " + tiqueteAsociado.getId() + " úsalo para ingresar a las atracciones.");
+                
+            } else {
+                // Crear el tiquete asociado
+                String tipoTiquete = (String) txtTipoTiquete.getSelectedItem();
+                LocalDate fechaAdquisicion = LocalDate.now();
+                String estadoAdquisicion = "Activo";
+
+                Tiquete tiquete = new Tiquete(tipoTiquete, fechaAdquisicion, estadoAdquisicion, clienteAsociado);
+                TiqueteControlador tiqueteControlador = new TiqueteControlador();
+                Tiquete tiqueteAsociado = tiqueteControlador.insertarTiquete(tiquete);
+
+                // Registrar la visita
+                Visitas visita = new Visitas(clienteAsociado, tiqueteAsociado);
+                VisitasControlador visitasControlador = new VisitasControlador();
+                visitasControlador.insertarVisita(visita);
+
+                // Mensaje de éxito
+                JOptionPane.showMessageDialog(this, "Cliente registrado correctamente.");
+                txtMensaje.setText("¡Gracias por visitar el Parque Salitre Mágico " + clienteAsociado.getNombre() + "! " + 
+                                   "Se te asignó el tiquete número " + tiqueteAsociado.getId() + " úsalo para ingresar a las atracciones.");
+
+            }
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Por favor ingrese datos válidos",
